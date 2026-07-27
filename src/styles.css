@@ -2,7 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -33,85 +33,120 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-magenta: var(--brand-magenta);
-  --color-violet: var(--brand-violet);
-  --color-electric: var(--brand-electric);
-  --color-ember: var(--brand-ember);
-  --color-ink: var(--brand-ink);
-  --color-mist: var(--brand-mist);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+
+  /* Legacy token names — remapped onto the new Emerald + Gold pair so we
+     don't have to touch every call site. Semantics:
+       magenta  -> primary (Emerald)
+       electric -> primary (Emerald bright accent)
+       violet   -> primary (darker Emerald authority)
+       ember    -> gold (single warm accent — sparing use)
+       ink      -> panel dark surface
+       mist     -> muted-foreground */
+  --color-magenta: var(--primary);
+  --color-violet: var(--primary);
+  --color-electric: var(--primary);
+  --color-ember: var(--gold);
+  --color-ink: var(--panel);
+  --color-mist: var(--muted-foreground);
 
   --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* LIGHT MODE (default) */
 :root {
   --radius: 0.875rem;
 
-  /* Global Emerald Palette (OKLCH) — derived from the YOU AI hexagon mark
-     Rebrand note: the old palette mixed 4 unrelated hues (emerald + navy +
-     gold + amber), which read as decorative/templated. This version commits
-     to one hue family (teal/emerald, matching the logo's faceted hexagon)
-     for every structural token, and keeps gold as the ONE deliberate warm
-     accent, used sparingly (KPIs, premium highlights) instead of a full
-     gradient partner. Token names preserved for backward compatibility:
-       magenta  -> Emerald Core (primary brand)
-       violet   -> Emerald Deep (authority/depth — was Royal Navy/blue)
-       electric -> Emerald Bright (glow, CTA highlight — was Gold)
-       ember    -> Gold/Bronze (single warm accent — kept, refined, sparing use)
-       ink      -> Ink (dark surface base — now teal-neutral, was blue-neutral)
-       mist     -> Slate (neutral text — now teal-tinted, was cool-blue)
-  */
-  --brand-ink: oklch(0.15 0.012 175);
-  --brand-mist: oklch(0.74 0.03 175);
-  --brand-magenta: oklch(0.60 0.12 165);   /* Emerald Core */
-  --brand-violet: oklch(0.38 0.09 175);    /* Emerald Deep */
-  --brand-electric: oklch(0.80 0.15 165);  /* Emerald Bright */
-  --brand-ember: oklch(0.78 0.09 85);      /* Gold/Bronze — sparing use only */
+  --background: #FFFFFF;
+  --foreground: #14181C;
+  --muted-foreground: #6B6B68;
+  --border: #E5E4E0;
+  --input: #E5E4E0;
+  --card: #FFFFFF;
+  --card-foreground: #14181C;
+  --popover: #FFFFFF;
+  --popover-foreground: #14181C;
+  --panel: #14181C;
+  --panel-foreground: #FFFFFF;
+  --primary: #0E8F72;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F3F2EE;
+  --secondary-foreground: #14181C;
+  --muted: #F3F2EE;
+  --accent: #F3F2EE;
+  --accent-foreground: #14181C;
+  --destructive: #C0392B;
+  --destructive-foreground: #FFFFFF;
+  --ring: #0E8F72;
+  --gold: #B8862E;
+  --gold-foreground: #14181C;
 
-  --background: oklch(0.12 0.012 175);
-  --foreground: oklch(0.97 0.004 175);
-  --card: oklch(0.17 0.014 175);
-  --card-foreground: oklch(0.97 0.004 175);
-  --popover: oklch(0.15 0.012 175);
-  --popover-foreground: oklch(0.97 0.004 175);
-  --primary: oklch(0.60 0.12 165);
-  --primary-foreground: oklch(0.99 0.003 175);
-  --secondary: oklch(0.23 0.016 175);
-  --secondary-foreground: oklch(0.97 0.004 175);
-  --muted: oklch(0.21 0.014 175);
-  --muted-foreground: oklch(0.70 0.025 175);
-  --accent: oklch(0.80 0.15 165);
-  --accent-foreground: oklch(0.15 0.012 175);
-  --destructive: oklch(0.6 0.19 25);
-  --destructive-foreground: oklch(0.99 0.003 175);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.60 0.12 165);
+  --chart-1: #0E8F72;
+  --chart-2: #2FD9AE;
+  --chart-3: #14181C;
+  --chart-4: #B8862E;
+  --chart-5: #6B6B68;
 
-  --chart-1: oklch(0.60 0.12 165);   /* emerald core */
-  --chart-2: oklch(0.80 0.15 165);   /* emerald bright */
-  --chart-3: oklch(0.38 0.09 175);   /* emerald deep */
-  --chart-4: oklch(0.78 0.09 85);    /* gold */
-  --chart-5: oklch(0.74 0.03 175);   /* slate */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #14181C;
+  --sidebar-primary: #0E8F72;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F2EE;
+  --sidebar-accent-foreground: #14181C;
+  --sidebar-border: #E5E4E0;
+  --sidebar-ring: #0E8F72;
 
-  --sidebar: oklch(0.15 0.012 175);
-  --sidebar-foreground: oklch(0.97 0.004 175);
-  --sidebar-primary: oklch(0.60 0.12 165);
-  --sidebar-primary-foreground: oklch(0.99 0.003 175);
-  --sidebar-accent: oklch(0.23 0.016 175);
-  --sidebar-accent-foreground: oklch(0.97 0.004 175);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.60 0.12 165);
+  --shadow-glow: 0 1px 2px rgba(20, 24, 28, 0.04), 0 4px 12px rgba(20, 24, 28, 0.06);
+  --shadow-card: 0 1px 2px rgba(20, 24, 28, 0.04), 0 8px 24px rgba(20, 24, 28, 0.06);
+}
 
-  --gradient-hero: radial-gradient(ellipse at 20% 10%, oklch(0.60 0.12 165 / 0.30), transparent 55%),
-    radial-gradient(ellipse at 85% 15%, oklch(0.38 0.09 175 / 0.34), transparent 55%),
-    radial-gradient(ellipse at 60% 90%, oklch(0.78 0.09 85 / 0.10), transparent 60%),
-    linear-gradient(180deg, oklch(0.10 0.012 175), oklch(0.12 0.012 175));
-  --gradient-brand: linear-gradient(135deg, oklch(0.80 0.15 165), oklch(0.60 0.12 165) 45%, oklch(0.38 0.09 175));
-  --gradient-ember: linear-gradient(135deg, oklch(0.78 0.09 85), oklch(0.60 0.12 165));
-  --gradient-text: linear-gradient(120deg, oklch(0.99 0.003 175), oklch(0.80 0.15 165) 45%, oklch(0.60 0.12 165));
-  --shadow-glow: 0 30px 80px -30px oklch(0.60 0.12 165 / 0.5), 0 0 0 1px oklch(1 0 0 / 0.06) inset;
-  --shadow-card: 0 20px 60px -30px oklch(0 0 0 / 0.6), 0 0 0 1px oklch(1 0 0 / 0.06) inset;
+/* DARK MODE */
+.dark {
+  --background: #10151A;
+  --foreground: #F5F4F1;
+  --muted-foreground: #A3A29D;
+  --border: #2A2F35;
+  --input: #2A2F35;
+  --card: #171D1B;
+  --card-foreground: #F5F4F1;
+  --popover: #171D1B;
+  --popover-foreground: #F5F4F1;
+  --panel: #171D1B;
+  --panel-foreground: #F5F4F1;
+  --primary: #2FD9AE;
+  --primary-foreground: #10151A;
+  --secondary: #1B2126;
+  --secondary-foreground: #F5F4F1;
+  --muted: #1B2126;
+  --accent: #1B2126;
+  --accent-foreground: #F5F4F1;
+  --destructive: #E74C3C;
+  --destructive-foreground: #F5F4F1;
+  --ring: #2FD9AE;
+  --gold: #D4AF6A;
+  --gold-foreground: #10151A;
+
+  --chart-1: #2FD9AE;
+  --chart-2: #0E8F72;
+  --chart-3: #F5F4F1;
+  --chart-4: #D4AF6A;
+  --chart-5: #A3A29D;
+
+  --sidebar: #171D1B;
+  --sidebar-foreground: #F5F4F1;
+  --sidebar-primary: #2FD9AE;
+  --sidebar-primary-foreground: #10151A;
+  --sidebar-accent: #1B2126;
+  --sidebar-accent-foreground: #F5F4F1;
+  --sidebar-border: #2A2F35;
+  --sidebar-ring: #2FD9AE;
+
+  --shadow-glow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 @layer base {
@@ -124,25 +159,19 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  body {
-    background-image: var(--gradient-hero);
-    background-attachment: fixed;
-  }
   ::selection {
-    background: oklch(0.60 0.12 165 / 0.4);
-    color: oklch(0.99 0.003 175);
+    background: color-mix(in srgb, var(--primary) 30%, transparent);
+    color: var(--foreground);
   }
 }
 
 @layer base {
-  /* Arabic typography */
   html[lang="ar"] {
     font-family: "IBM Plex Sans Arabic", "Inter", ui-sans-serif, system-ui, sans-serif;
   }
   html[lang="ar"] body {
     letter-spacing: 0;
   }
-  /* Native-feeling tabular numerics for AR pricing/scores */
   html[lang="ar"] .font-display {
     font-family: "Tajawal", "IBM Plex Sans Arabic", "Cairo", ui-sans-serif, system-ui, sans-serif;
     font-weight: 700;
@@ -156,33 +185,38 @@
   letter-spacing: -0.025em;
 }
 
+/* Glass utilities — de-glassified. Plain card surface + 1px border, no blur. */
 @utility glass {
-  background: linear-gradient(180deg, oklch(1 0 0 / 0.06), oklch(1 0 0 / 0.02));
-  border: 1px solid oklch(1 0 0 / 0.08);
-  backdrop-filter: blur(20px) saturate(140%);
+  background: var(--card);
+  border: 1px solid var(--border);
 }
 
 @utility glass-strong {
-  background: linear-gradient(180deg, oklch(1 0 0 / 0.09), oklch(1 0 0 / 0.03));
-  border: 1px solid oklch(1 0 0 / 0.12);
-  backdrop-filter: blur(28px) saturate(160%);
+  background: var(--card);
+  border: 1px solid var(--border);
 }
 
+/* Text gradient — now a plain solid color (primary accent). */
 @utility text-gradient {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--primary);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
 }
 
+/* Brand background — solid primary, no gradient. */
 @utility bg-brand {
-  background: var(--gradient-brand);
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
+/* Ember (gold) — solid gold, sparing use. */
 @utility bg-ember {
-  background: var(--gradient-ember);
+  background: var(--gold);
+  color: var(--gold-foreground);
 }
 
+/* Neutral shadows, no colored glow. */
 @utility shadow-glow {
   box-shadow: var(--shadow-glow);
 }
@@ -191,18 +225,15 @@
   box-shadow: var(--shadow-card);
 }
 
+/* Grid background — kept but neutralized. */
 @utility grid-bg {
   background-image:
-    linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
-@keyframes float-orb {
-  0%, 100% { transform: translate3d(0,0,0) scale(1); }
-  50% { transform: translate3d(20px, -30px, 0) scale(1.05); }
-}
-
+/* Orb animation — removed. Kept as no-op so existing class names don't break. */
 @utility animate-orb {
-  animation: float-orb 14s ease-in-out infinite;
+  animation: none;
 }
