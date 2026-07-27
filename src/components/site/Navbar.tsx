@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { LeadDialog } from "./LeadDialog";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 import { useT } from "@/lib/i18n";
 
 export function Navbar() {
@@ -56,6 +57,7 @@ export function Navbar() {
 
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <LanguageSwitcher />
             <LeadDialog variant="roadmap">
               <button
