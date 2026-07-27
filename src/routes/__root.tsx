@@ -11,6 +11,7 @@ import {
 
 import { Toaster } from "@/components/ui/sonner";
 import { I18nProvider, PRE_HYDRATION_LANG_SCRIPT, useT } from "@/lib/i18n";
+import { ThemeProvider, PRE_HYDRATION_THEME_SCRIPT } from "@/lib/theme";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -93,6 +94,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       </head>
       <body suppressHydrationWarning>
         <ScriptOnce>{PRE_HYDRATION_LANG_SCRIPT}</ScriptOnce>
+        <ScriptOnce>{PRE_HYDRATION_THEME_SCRIPT}</ScriptOnce>
         {children}
         <Scripts />
       </body>
@@ -104,10 +106,12 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nProvider>
-        <Outlet />
-        <Toaster position="bottom-right" theme="dark" />
-      </I18nProvider>
+      <ThemeProvider>
+        <I18nProvider>
+          <Outlet />
+          <Toaster position="bottom-right" />
+        </I18nProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
