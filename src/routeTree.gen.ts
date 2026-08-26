@@ -12,19 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TransformationStoriesRouteImport } from './routes/transformation-stories'
 import { Route as TransformationJourneyRouteImport } from './routes/transformation-journey'
 import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
-import { Route as McpRouteImport } from './routes/mcp'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as BusinessEnginesRouteImport } from './routes/business-engines'
 import { Route as AiProductsRouteImport } from './routes/ai-products'
 import { Route as AiAssessmentRouteImport } from './routes/ai-assessment'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const TransformationStoriesRoute = TransformationStoriesRouteImport.update({
   id: '/transformation-stories',
@@ -41,11 +36,6 @@ const RoiCalculatorRoute = RoiCalculatorRouteImport.update({
   path: '/roi-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const InsightsRoute = InsightsRouteImport.update({
   id: '/insights',
   path: '/insights',
@@ -59,11 +49,6 @@ const IndustriesRoute = IndustriesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConnectRoute = ConnectRouteImport.update({
-  id: '/connect',
-  path: '/connect',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BusinessEnginesRoute = BusinessEnginesRouteImport.update({
@@ -91,24 +76,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93InvokeToolToolRoute =
-  Char91DotmcpChar93InvokeToolToolRouteImport.update({
-    id: '/.mcp/invoke-tool/$tool',
-    path: '/.mcp/invoke-tool/$tool',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -116,17 +83,12 @@ export interface FileRoutesByFullPath {
   '/ai-assessment': typeof AiAssessmentRoute
   '/ai-products': typeof AiProductsRoute
   '/business-engines': typeof BusinessEnginesRoute
-  '/connect': typeof ConnectRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
-  '/mcp': typeof McpRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -134,17 +96,12 @@ export interface FileRoutesByTo {
   '/ai-assessment': typeof AiAssessmentRoute
   '/ai-products': typeof AiProductsRoute
   '/business-engines': typeof BusinessEnginesRoute
-  '/connect': typeof ConnectRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
-  '/mcp': typeof McpRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -153,17 +110,12 @@ export interface FileRoutesById {
   '/ai-assessment': typeof AiAssessmentRoute
   '/ai-products': typeof AiProductsRoute
   '/business-engines': typeof BusinessEnginesRoute
-  '/connect': typeof ConnectRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
-  '/mcp': typeof McpRoute
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -173,17 +125,12 @@ export interface FileRouteTypes {
     | '/ai-assessment'
     | '/ai-products'
     | '/business-engines'
-    | '/connect'
     | '/contact'
     | '/industries'
     | '/insights'
-    | '/mcp'
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
-    | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -191,17 +138,12 @@ export interface FileRouteTypes {
     | '/ai-assessment'
     | '/ai-products'
     | '/business-engines'
-    | '/connect'
     | '/contact'
     | '/industries'
     | '/insights'
-    | '/mcp'
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
-    | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
@@ -209,17 +151,12 @@ export interface FileRouteTypes {
     | '/ai-assessment'
     | '/ai-products'
     | '/business-engines'
-    | '/connect'
     | '/contact'
     | '/industries'
     | '/insights'
-    | '/mcp'
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
-    | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -228,17 +165,12 @@ export interface RootRouteChildren {
   AiAssessmentRoute: typeof AiAssessmentRoute
   AiProductsRoute: typeof AiProductsRoute
   BusinessEnginesRoute: typeof BusinessEnginesRoute
-  ConnectRoute: typeof ConnectRoute
   ContactRoute: typeof ContactRoute
   IndustriesRoute: typeof IndustriesRoute
   InsightsRoute: typeof InsightsRoute
-  McpRoute: typeof McpRoute
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   TransformationJourneyRoute: typeof TransformationJourneyRoute
   TransformationStoriesRoute: typeof TransformationStoriesRoute
-  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
-  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -264,13 +196,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoiCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/insights': {
       id: '/insights'
       path: '/insights'
@@ -290,13 +215,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/connect': {
-      id: '/connect'
-      path: '/connect'
-      fullPath: '/connect'
-      preLoaderRoute: typeof ConnectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/business-engines': {
@@ -334,27 +252,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -364,18 +261,12 @@ const rootRouteChildren: RootRouteChildren = {
   AiAssessmentRoute: AiAssessmentRoute,
   AiProductsRoute: AiProductsRoute,
   BusinessEnginesRoute: BusinessEnginesRoute,
-  ConnectRoute: ConnectRoute,
   ContactRoute: ContactRoute,
   IndustriesRoute: IndustriesRoute,
   InsightsRoute: InsightsRoute,
-  McpRoute: McpRoute,
   RoiCalculatorRoute: RoiCalculatorRoute,
   TransformationJourneyRoute: TransformationJourneyRoute,
   TransformationStoriesRoute: TransformationStoriesRoute,
-  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
-  Char91DotwellKnownChar93OauthProtectedResourceRoute:
-    Char91DotwellKnownChar93OauthProtectedResourceRoute,
-  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
