@@ -1,6 +1,6 @@
 // Centralized WhatsApp lead routing.
 // Use the direct recipient number so every submission can carry a dynamic text payload.
-const WA_PHONE_NUMBER = "201038290203";
+const WA_PHONE_NUMBER = "966536895244";
 
 export type WAField = { label: string; value: string };
 export type WAType = "roadmap" | "strategy" | "assessment" | "roi" | "contact" | "quote";

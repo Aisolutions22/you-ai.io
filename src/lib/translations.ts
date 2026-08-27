@@ -356,8 +356,8 @@ const en: Dictionary = {
     success: { title: "Request received.", sub: "A senior partner will be in touch within one business day." },
     cards: {
       hq: { title: "Riyadh HQ", lines: ["King Abdullah Financial District", "Riyadh, Saudi Arabia"] },
-      email: { title: "Email", lines: ["hello@youai.sa"] },
-      phone: { title: "Phone", lines: ["+966 11 000 0000"] },
+      email: { title: "Email", lines: ["You.ao.io.info@gmail.com"] },
+      phone: { title: "Phone", lines: ["+966 53 689 5244"] },
       executive: {
         eyebrow: "For enterprise leaders",
         title: "Executive Strategy Session",
@@ -837,8 +837,8 @@ const ar: Dictionary = {
     success: { title: "تم استلام طلبك.", sub: "سيتواصل معك أحد كبار شركائنا خلال يوم عمل واحد." },
     cards: {
       hq: { title: "المقر — الرياض", lines: ["المركز المالي الملك عبدالله", "الرياض، المملكة العربية السعودية"] },
-      email: { title: "البريد", lines: ["hello@youai.sa"] },
-      phone: { title: "الهاتف", lines: ["+966 11 000 0000"] },
+      email: { title: "البريد", lines: ["You.ao.io.info@gmail.com"] },
+      phone: { title: "الهاتف", lines: ["+966 53 689 5244"] },
       executive: {
         eyebrow: "للقيادات التنفيذية",
         title: "جلسة استراتيجية تنفيذية",
