@@ -69,8 +69,6 @@ const WHY_ICONS = [Globe2, ShieldCheck, Database, Brain, Rocket, Gauge];
 function Hero() {
   const t = useT();
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yPortrait = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
@@ -88,6 +86,23 @@ function Hero() {
   return (
     <section ref={ref} className="relative isolate overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_75%)]" />
+
+      {/* Duotone portrait backdrop — grayscale base + emerald tint, faded toward the text side */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 opacity-[0.30] dark:opacity-[0.38] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] lg:[mask-image:linear-gradient(to_left,black_25%,rgba(0,0,0,0.35)_60%,transparent_95%)] lg:rtl:[mask-image:linear-gradient(to_right,black_25%,rgba(0,0,0,0.35)_60%,transparent_95%)]">
+          <picture>
+            <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
+            <img src={heroPortrait} alt="" width={1024} height={1536} fetchPriority="high" decoding="async"
+              className="h-full w-full object-cover object-[65%_center] grayscale contrast-[0.95] brightness-[1.05] lg:object-[70%_top]" />
+          </picture>
+          {/* Emerald duotone tint */}
+          <div className="absolute inset-0 bg-primary mix-blend-color" />
+          {/* Dark areas pulled toward panel/ink for depth */}
+          <div className="absolute inset-0 bg-panel mix-blend-multiply opacity-40 dark:opacity-60" />
+          {/* Gentle wash so text stays readable */}
+          <div className="absolute inset-0 bg-background/35" />
+        </div>
+      </div>
 
       <div className="relative mx-auto max-w-7xl px-6 pt-2 pb-6 sm:pt-4 sm:pb-10 lg:pt-6">
         <div className="grid items-center gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
