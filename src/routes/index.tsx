@@ -34,7 +34,7 @@ function HomePage() {
       <Band tone="alt"><Industries /></Band>
       <Band><Assessment /></Band>
       <Band tone="alt"><ROITeaser /></Band>
-      <Band><WhyYouAI /></Band>
+      <Band><SaudiMarket /></Band>
       <Band tone="alt"><Insights /></Band>
       <FinalCTA />
     </SiteLayout>
