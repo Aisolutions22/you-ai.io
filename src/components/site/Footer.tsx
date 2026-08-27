@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Twitter, Mail, MapPin, Phone, Sparkles } from "lucide-react";
+import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 import { useT } from "@/lib/i18n";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   const t = useT();
@@ -10,9 +11,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand shadow-glow">
-                <Sparkles className="h-4 w-4 text-primary-foreground" />
-              </span>
+              <img src={logo} alt="You AI" className="h-9 w-9 object-contain" />
               <span className="font-display text-2xl">You<span className="text-gradient">AI</span></span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-muted-foreground">{t.footer.tagline}</p>
@@ -41,8 +40,8 @@ export function Footer() {
             <h4 className="text-sm font-semibold">{t.footer.contact}</h4>
             <ul className="mt-4 grid gap-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> {t.footer.address}</li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@youai.sa</li>
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +966 11 000 0000</li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> <span dir="ltr">You.ao.io.info@gmail.com</span></li>
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> <span dir="ltr">+966 53 689 5244</span></li>
             </ul>
           </div>
         </div>

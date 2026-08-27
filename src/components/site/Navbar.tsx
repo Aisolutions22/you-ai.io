@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { LeadDialog } from "./LeadDialog";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
@@ -35,9 +35,7 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4">
         <nav className={`flex items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all ${scrolled ? "glass-strong shadow-card" : "glass"}`}>
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand shadow-glow">
-              <img src={logoAsset.url} alt="You AI" className="h-4 w-4 object-contain" />
-            </span>
+            <img src={logo} alt="You AI" className="h-9 w-9 object-contain" />
             <span className="font-display text-2xl leading-none">You<span className="text-gradient">AI</span></span>
           </Link>
 
