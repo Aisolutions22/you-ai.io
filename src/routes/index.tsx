@@ -150,12 +150,10 @@ function Hero() {
           </div>
 
           <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }} style={{ y: yPortrait }}
-            className="relative mx-auto hidden h-[340px] w-full max-w-[420px] lg:block lg:h-[460px]">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_60%_40%,oklch(0.65_0.28_340/0.45),transparent_60%)] blur-2xl" />
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_70%,oklch(0.65_0.25_265/0.4),transparent_60%)] blur-2xl" />
-            <motion.div aria-hidden animate={{ rotate: 360 }} transition={{ duration: 60, ease: "linear", repeat: Infinity }} className="absolute inset-6 rounded-full border border-white/5" />
-            <img src={heroPortrait} alt="AI-powered transformation" width={1024} height={1536} fetchPriority="high" decoding="async"
-              className="relative h-full w-full object-contain object-center drop-shadow-[0_30px_80px_rgba(220,40,180,0.25)] ltr:-scale-x-100" />
+            className="relative mx-auto hidden h-[340px] w-full max-w-[440px] lg:block lg:h-[460px]">
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,var(--primary),transparent_62%)] opacity-20 blur-2xl" />
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_75%,var(--gold),transparent_60%)] opacity-15 blur-2xl" />
+            <HeroVisual />
           </motion.div>
         </div>
 
