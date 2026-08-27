@@ -19,11 +19,11 @@ import { Label } from "@/components/ui/label";
 import { useT } from "@/lib/i18n";
 import heroPortrait from "@/assets/hero-ai-portrait.webp";
 import heroPortraitSm from "@/assets/hero-ai-portrait-sm.webp";
+import saudiMarketVisual from "@/assets/saudi-market-vision-2030.jpg";
 
 export const JOURNEY_ICONS = [FileSearch, BarChart3, Layers, Workflow, Plug, Maximize, Gauge];
 const ENGINE_ICONS = [TrendingUp, Cog, Heart, FileText, Lightbulb];
 const INDUSTRY_ICONS = [Scale, Building2, Home, ShoppingBag, Stethoscope, PhoneCall, Users, PenTool, Store];
-const WHY_ICONS = [Globe2, ShieldCheck, Database, Brain, Rocket, Gauge];
 
 /* ==================================================================
    HOME PAGE SECTIONS (used only by src/routes/index.tsx)
