@@ -148,14 +148,8 @@ function Hero() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }} style={{ y: yPortrait }}
-            className="relative mx-auto h-[280px] w-full max-w-[320px] sm:h-[340px] sm:max-w-[380px] lg:h-[460px] lg:max-w-[420px]">
-            <picture>
-              <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
-              <img src={heroPortrait} alt="AI-powered transformation" width={1024} height={1536} fetchPriority="high" decoding="async"
-                className="relative h-full w-full object-contain object-center ltr:-scale-x-100" />
-            </picture>
-          </motion.div>
+          {/* Visual space for the duotone portrait backdrop */}
+          <div className="hidden lg:block" />
         </div>
 
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.55 }}
