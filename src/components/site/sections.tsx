@@ -585,44 +585,64 @@ export function ROITeaser() {
     </Section>
   );
 }
-/* ---------------- WHY YOU AI (merged Scenarios + WhySaudi) ---------------- */
-export function WhyYouAI() {
+/* ---------------- SAUDI MARKET / VISION 2030 ---------------- */
+export function SaudiMarket() {
   const t = useT();
-  const scenario = t.scenarios.items[0];
-  const items = t.why.items.slice(0, 4);
   return (
-    <Section id="why" className={TIGHT}>
-      <SectionHeading
-        eyebrow={t.why.eyebrow}
-        title={<>{t.why.title1} <span className="text-gradient italic">{t.why.titleHi}</span>{t.why.title2}</>}
-      />
+    <Section id="saudi-market" className={TIGHT}>
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        {/* Text content */}
+        <div className="order-1">
+          <SectionEyebrow>{t.saudiMarket.eyebrow}</SectionEyebrow>
+          <h2 className="font-display mt-4 text-3xl leading-[1.1] sm:text-4xl lg:text-5xl">
+            {t.saudiMarket.title1}{" "}
+            <span className="text-gradient">{t.saudiMarket.titleHi}</span>
+            {t.saudiMarket.title2}
+          </h2>
+          <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
+            {t.saudiMarket.sub}
+          </p>
 
-      {/* Proof strip from Scenarios deltas */}
-      <div className="mt-8 flex flex-wrap justify-center gap-2">
-        {scenario.deltas.map((d) => (
-          <span key={d} className="rounded-full bg-brand/15 border border-white/10 px-3 py-1.5 text-xs text-foreground/90">
-            {d}
-          </span>
-        ))}
+          <ul className="mt-8 space-y-4">
+            {t.saudiMarket.bullets.map((b) => (
+              <li key={b.k} className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Check className="h-3 w-3" />
+                </span>
+                <div>
+                  <span className="font-medium text-foreground">{b.k}</span>
+                  <p className="text-sm text-muted-foreground">{b.d}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8">
+            <Link
+              to="/industries"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              {t.saudiMarket.cta}
+              <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Image — exact uploaded asset, no filters */}
+        <div className="order-2">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-secondary/30 shadow-card">
+            <img
+              src={saudiMarketVisual}
+              alt="Saudi Vision 2030 AI solutions"
+              width={1536}
+              height={1024}
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-full object-contain"
+            />
+          </div>
+        </div>
       </div>
-
-      {/* Differentiator bullets */}
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((w, i) => {
-          const Icon = WHY_ICONS[i] ?? ShieldCheck;
-          return (
-            <motion.div key={w.k} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: i * 0.04 }}
-              className="glass rounded-2xl p-5">
-              <Icon className="h-5 w-5 text-electric" />
-              <h3 className="font-display mt-3 text-lg leading-tight">{w.k}</h3>
-              <p className="mt-1.5 text-xs text-muted-foreground line-clamp-3">{w.d}</p>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      <TeaserLinks links={[{ to: "/transformation-stories", label: t.common.exploreProgram }]} />
     </Section>
   );
 }
