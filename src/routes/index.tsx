@@ -6,13 +6,13 @@ import {
   Scale, Building2, Home, ShoppingBag, Stethoscope, PhoneCall, Users, PenTool, Store,
   Brain, Zap, DollarSign, ChevronRight, ChevronLeft, Calendar,
   FileSearch, BarChart3, Layers, Workflow, Plug, Maximize, Gauge,
-  ShieldCheck, Globe2, Database, Rocket, AlertTriangle, MessageCircle, Globe,
+  ShieldCheck, Globe2, Database, Rocket, AlertTriangle,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { Section, SectionHeading, SectionEyebrow } from "@/components/site/Section";
 import { LeadDialog } from "@/components/site/LeadDialog";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { useT, useI18n } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 import heroPortrait from "@/assets/hero-ai-portrait.webp";
 import heroPortraitSm from "@/assets/hero-ai-portrait-sm.webp";
 
@@ -64,103 +64,6 @@ const ENGINE_ICONS = [TrendingUp, Cog, Heart, FileText, Lightbulb];
 const INDUSTRY_ICONS = [Scale, Building2, Home, ShoppingBag, Stethoscope, PhoneCall, Users, PenTool, Store];
 const WHY_ICONS = [Globe2, ShieldCheck, Database, Brain, Rocket, Gauge];
 
-/* Original SVG illustration: half-human / half-circuit AI head with a soft
-   halo, connected by thin lines to surrounding capability chips. Colors are
-   driven by the Emerald/Gold design tokens so it adapts to light & dark. */
-function HeroVisual() {
-  const { lang } = useI18n();
-  const chips = [
-    { Icon: MessageCircle, label: lang === "ar" ? "واتساب" : "WhatsApp", x: 12, y: 8, lx: 78, ly: 72 },
-    { Icon: Globe, label: lang === "ar" ? "موقع ويب" : "Website", x: 70, y: 8, lx: 342, ly: 72 },
-    { Icon: Users, label: "CRM", x: 6, y: 44, lx: 62, ly: 232 },
-    { Icon: Database, label: lang === "ar" ? "قاعدة بيانات" : "Database", x: 74, y: 44, lx: 358, ly: 232 },
-    { Icon: BarChart3, label: lang === "ar" ? "تحليلات" : "Analytics", x: 62, y: 82, lx: 330, ly: 396 },
-  ];
-  const CX = 210, CY = 235;
-  return (
-    <div className="relative h-full w-full">
-      {/* connecting lines */}
-      <svg aria-hidden viewBox="0 0 420 460" className="absolute inset-0 h-full w-full" fill="none">
-        {chips.map((c) => (
-          <g key={c.label}>
-            <path d={`M ${CX} ${CY} L ${c.lx} ${c.ly}`} stroke="var(--primary)" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="3 5" />
-            <circle cx={c.lx} cy={c.ly} r="3" fill="var(--primary)" fillOpacity="0.7" />
-          </g>
-        ))}
-      </svg>
-
-      {/* AI head */}
-      <svg viewBox="0 0 300 300" className="absolute left-1/2 top-1/2 h-[68%] w-auto -translate-x-1/2 -translate-y-1/2" role="img" aria-label="AI assistant illustration">
-        <defs>
-          <radialGradient id="hvHalo" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.28" />
-            <stop offset="70%" stopColor="var(--primary)" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
-          </radialGradient>
-          <linearGradient id="hvFace" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#FAFBFC" />
-            <stop offset="55%" stopColor="#E4E8EC" />
-            <stop offset="100%" stopColor="#B9C1C9" />
-          </linearGradient>
-          <clipPath id="hvLeft"><rect x="40" y="20" width="110" height="260" /></clipPath>
-          <clipPath id="hvRight"><rect x="150" y="20" width="110" height="260" /></clipPath>
-        </defs>
-
-        <circle cx="150" cy="150" r="146" fill="url(#hvHalo)" />
-        <circle cx="150" cy="150" r="118" fill="none" stroke="var(--primary)" strokeOpacity="0.25" strokeWidth="1" strokeDasharray="2 6" />
-
-        {/* head silhouette */}
-        <path d="M150 32 C196 32 224 74 224 122 C224 152 216 176 202 196 C192 211 186 226 184 244 L183 262 L117 262 L116 244 C114 226 108 211 98 196 C84 176 76 152 76 122 C76 74 104 32 150 32 Z" fill="url(#hvFace)" />
-
-        {/* human half details (left) */}
-        <g clipPath="url(#hvLeft)" stroke="#98A2AC" strokeWidth="2" strokeLinecap="round" fill="none">
-          <path d="M108 132 q12 -9 24 0" />
-          <path d="M112 132 q8 5 16 0" strokeOpacity="0.6" />
-          <path d="M118 196 q14 8 28 2" />
-          <path d="M104 100 q14 -10 30 -4" strokeOpacity="0.7" />
-        </g>
-
-        {/* machine half (right): circuits in primary glow */}
-        <g clipPath="url(#hvRight)">
-          <path d="M150 32 C196 32 224 74 224 122 C224 152 216 176 202 196 C192 211 186 226 184 244 L183 262 L150 262 Z" fill="#12181D" />
-          <g stroke="var(--primary)" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M150 60 H176 V92 H204" />
-            <path d="M150 110 H168 V140 H198 V168" />
-            <path d="M150 170 H172 V210 H160 V240" />
-            <path d="M186 120 H214" />
-            <path d="M190 200 H206 V228" />
-            <path d="M150 90 V70" strokeOpacity="0.7" />
-          </g>
-          <g fill="var(--primary)">
-            <circle cx="204" cy="92" r="3.4" /><circle cx="198" cy="168" r="3.4" />
-            <circle cx="214" cy="120" r="3" /><circle cx="160" cy="240" r="3" />
-            <circle cx="206" cy="228" r="3" /><circle cx="150" cy="60" r="2.6" />
-          </g>
-          <circle cx="182" cy="130" r="16" fill="none" stroke="var(--primary)" strokeWidth="2" />
-          <circle cx="182" cy="130" r="7" fill="var(--primary)" fillOpacity="0.85" />
-          <circle cx="182" cy="130" r="24" fill="none" stroke="var(--primary)" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="3 4" />
-        </g>
-
-        {/* divider + neck glow */}
-        <line x1="150" y1="36" x2="150" y2="262" stroke="var(--primary)" strokeOpacity="0.5" strokeWidth="1.2" />
-        <rect x="118" y="262" width="64" height="10" rx="5" fill="var(--primary)" fillOpacity="0.25" />
-      </svg>
-
-      {/* capability chips */}
-      {chips.map((c, i) => (
-        <motion.div key={c.label}
-          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 + i * 0.12 }}
-          className="absolute flex flex-col items-center gap-1.5"
-          style={{ left: `${c.x}%`, top: `${c.y}%` }}>
-          <span className="grid h-11 w-11 place-items-center rounded-xl glass-strong shadow-card">
-            <c.Icon className="h-5 w-5 text-primary" />
-          </span>
-          <span className="rounded-md bg-card/90 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">{c.label}</span>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
 
 /* ---------------- HERO ---------------- */
 function Hero() {
