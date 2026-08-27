@@ -4,7 +4,7 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { LeadDialog } from "@/components/site/LeadDialog";
 import { ArrowRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
-import { IndustryCards } from "./index";
+import { IndustryCards } from "@/components/site/sections";
 
 export const Route = createFileRoute("/industries")({
   head: () => ({
