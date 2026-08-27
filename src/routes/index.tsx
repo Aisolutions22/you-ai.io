@@ -7,6 +7,7 @@ import {
   Brain, Zap, DollarSign, ChevronRight, ChevronLeft, Calendar,
   FileSearch, BarChart3, Layers, Workflow, Plug, Maximize, Gauge,
   ShieldCheck, Globe2, Database, Rocket, AlertTriangle, MessageCircle, Globe, ChevronDown,
+  Factory, Landmark, Hotel, Check,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { Section, SectionHeading, SectionEyebrow } from "@/components/site/Section";
@@ -63,6 +64,114 @@ const JOURNEY_ICONS = [FileSearch, BarChart3, Layers, Workflow, Plug, Maximize, 
 const ENGINE_ICONS = [TrendingUp, Cog, Heart, FileText, Lightbulb];
 const INDUSTRY_ICONS = [Scale, Building2, Home, ShoppingBag, Stethoscope, PhoneCall, Users, PenTool, Store];
 const WHY_ICONS = [Globe2, ShieldCheck, Database, Brain, Rocket, Gauge];
+
+/* Six flagship sectors — shared by the homepage Industries section and /industries page */
+export const INDUSTRY_CARDS = [
+  {
+    icon: Stethoscope,
+    name: "الرعاية الصحية",
+    desc: "حلول ذكية للعيادات والمستشفيات لتحسين تجربة المريض وإدارة المواعيد والبيانات الطبية.",
+    points: [
+      "مساعد ذكي لحجز المواعيد والرد على الاستفسارات",
+      "أتمتة السجلات والتقارير الطبية",
+      "تحليل البيانات لتحسين جودة الرعاية",
+    ],
+  },
+  {
+    icon: ShoppingBag,
+    name: "التجزئة والتجارة",
+    desc: "أتمتة المبيعات وخدمة العملاء وإدارة المخزون لزيادة المبيعات وتحسين تجربة التسوق.",
+    points: [
+      "مساعد مبيعات ذكي على واتساب والمتاجر",
+      "توقع الطلب وإدارة المخزون بذكاء",
+      "تحليل سلوك العملاء وزيادة الولاء",
+    ],
+  },
+  {
+    icon: Home,
+    name: "العقارات",
+    desc: "حلول ذكية لإدارة العملاء (Leads) والمشاريع وتحسين العمليات العقارية.",
+    points: [
+      "مساعد ذكاء اصطناعي لإدارة العملاء والاهتمام",
+      "أتمتة المتابعات والعروض العقارية",
+      "تحليل أداء المشاريع واتخاذ قرارات أدق",
+    ],
+  },
+  {
+    icon: Factory,
+    name: "التصنيع",
+    desc: "تحسين العمليات الإنتاجية وسلاسل الإمداد والصيانة التنبؤية لرفع الكفاءة وتقليل التوقف.",
+    points: [
+      "صيانة تنبؤية باستخدام الذكاء الاصطناعي",
+      "أتمتة خطوط الإنتاج ومراقبة الجودة",
+      "تحسين سلاسل الإمداد وتقليل الهدر",
+    ],
+  },
+  {
+    icon: Landmark,
+    name: "الخدمات المالية",
+    desc: "أتمتة العمليات المالية وتحليل المخاطر والكشف عن الاحتيال وتقديم تجربة عملاء متميزة.",
+    points: [
+      "كشف الاحتيال وتحليل المخاطر بذكاء",
+      "أتمتة معالجة الطلبات والموافقات",
+      "تقارير وتحليلات مالية ذكية وفورية",
+    ],
+  },
+  {
+    icon: Hotel,
+    name: "الضيافة والسياحة",
+    desc: "تحسين تجربة الضيوف وإدارة الحجوزات والعمليات التشغيلية بكفاءة عالية.",
+    points: [
+      "مساعد ضيوف ذكي على مدار الساعة",
+      "أتمتة الحجوزات والدفع والتأكيدات",
+      "تحليل تقييمات الضيوف ورفع مستوى الخدمة",
+    ],
+  },
+];
+
+/* Detailed sector card grid — flat cards, 1px border, no glow/blur */
+export function IndustryCards() {
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {INDUSTRY_CARDS.map((s, i) => {
+        const Icon = s.icon;
+        return (
+          <motion.div
+            key={s.name}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
+            className="flex flex-col rounded-3xl border border-border bg-card p-6 shadow-card sm:p-7"
+          >
+            <div className="flex items-center gap-3">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10">
+                <Icon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-display text-xl leading-tight">{s.name}</h3>
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+            <ul className="mt-4 space-y-2 border-t border-border pt-4">
+              {s.points.map((p) => (
+                <li key={p} className="flex items-start gap-2 text-sm text-foreground/90">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <span className="leading-snug">{p}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/industries"
+              className="group mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-medium text-primary hover:text-foreground transition-colors"
+            >
+              اكتشف الحلول
+              <ArrowRight className="h-4 w-4 rtl:rotate-180 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+            </Link>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
 
 
 /* ---------------- HERO ---------------- */
