@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   ArrowRight, Sparkles, TrendingUp, Cog, Heart, FileText, Lightbulb,
@@ -69,8 +69,6 @@ const WHY_ICONS = [Globe2, ShieldCheck, Database, Brain, Rocket, Gauge];
 function Hero() {
   const t = useT();
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yPortrait = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
@@ -88,6 +86,25 @@ function Hero() {
   return (
     <section ref={ref} className="relative isolate overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_75%)]" />
+
+      {/* Duotone portrait backdrop — grayscale base + emerald tint, faded toward the text side */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 opacity-[0.7] dark:opacity-[0.55] [mask-image:linear-gradient(to_top,black_0%,black_40%,transparent_85%)] lg:[mask-image:linear-gradient(to_left,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)] lg:rtl:[mask-image:linear-gradient(to_right,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)]">
+          <picture>
+            <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
+            <img src={heroPortrait} alt="" width={1024} height={1536} fetchPriority="high" decoding="async"
+              className="h-full w-full object-cover object-[65%_center] grayscale contrast-[1.1] brightness-[0.72] dark:contrast-[1.05] dark:brightness-[1.02] lg:object-[70%_top]" />
+          </picture>
+          {/* Emerald duotone tint */}
+          <div className="absolute inset-0 bg-primary mix-blend-color" />
+          {/* Stronger emerald presence in light mode */}
+          <div className="absolute inset-0 bg-primary/70 mix-blend-multiply dark:hidden" />
+          {/* Dark areas pulled toward ink for depth (dark mode) */}
+          <div className="absolute inset-0 hidden bg-panel mix-blend-multiply opacity-45 dark:block" />
+          {/* Readability wash, stronger behind the text side */}
+          <div className="absolute inset-0 bg-background/10 [mask-image:linear-gradient(to_left,transparent_20%,black_80%)] rtl:[mask-image:linear-gradient(to_right,transparent_20%,black_80%)]" />
+        </div>
+      </div>
 
       <div className="relative mx-auto max-w-7xl px-6 pt-2 pb-6 sm:pt-4 sm:pb-10 lg:pt-6">
         <div className="grid items-center gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
@@ -133,14 +150,8 @@ function Hero() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }} style={{ y: yPortrait }}
-            className="relative mx-auto h-[280px] w-full max-w-[320px] sm:h-[340px] sm:max-w-[380px] lg:h-[460px] lg:max-w-[420px]">
-            <picture>
-              <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
-              <img src={heroPortrait} alt="AI-powered transformation" width={1024} height={1536} fetchPriority="high" decoding="async"
-                className="relative h-full w-full object-contain object-center ltr:-scale-x-100" />
-            </picture>
-          </motion.div>
+          {/* Visual space for the duotone portrait backdrop */}
+          <div className="hidden lg:block" />
         </div>
 
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.55 }}
