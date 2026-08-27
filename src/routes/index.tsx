@@ -6,7 +6,7 @@ import {
   Scale, Building2, Home, ShoppingBag, Stethoscope, PhoneCall, Users, PenTool, Store,
   Brain, Zap, DollarSign, ChevronRight, ChevronLeft, Calendar,
   FileSearch, BarChart3, Layers, Workflow, Plug, Maximize, Gauge,
-  ShieldCheck, Globe2, Database, Rocket, AlertTriangle,
+  ShieldCheck, Globe2, Database, Rocket, AlertTriangle, MessageCircle, Globe,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { Section, SectionHeading, SectionEyebrow } from "@/components/site/Section";
