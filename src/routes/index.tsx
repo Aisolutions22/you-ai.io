@@ -211,6 +211,17 @@ function Hero() {
           ))}
         </motion.div>
 
+        {/* Trusted-by strip (placeholder logos — to be replaced with real clients) */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.65 }}
+          className="mx-auto mt-8 max-w-4xl text-center">
+          <div className="text-xs text-muted-foreground">يثق بنا أصحاب الأعمال لبناء أنظمتهم الذكية</div>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+            {["Nova Tech", "Falcon Group", "Zenith Retail", "Orbit Finance", "Vertex Care"].map((name) => (
+              <span key={name} dir="ltr" className="font-display text-sm tracking-wide text-muted-foreground/70">{name}</span>
+            ))}
+          </div>
+        </motion.div>
+
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }} className="relative mt-10 sm:mt-14">
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
