@@ -89,7 +89,7 @@ function Hero() {
 
       {/* Duotone portrait backdrop — grayscale base + emerald tint, faded toward the text side */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 opacity-[0.5] dark:opacity-[0.55] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] lg:[mask-image:linear-gradient(to_left,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)] lg:rtl:[mask-image:linear-gradient(to_right,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)]">
+        <div className="absolute inset-0 opacity-[0.7] dark:opacity-[0.55] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] lg:[mask-image:linear-gradient(to_left,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)] lg:rtl:[mask-image:linear-gradient(to_right,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)]">
           <picture>
             <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
             <img src={heroPortrait} alt="" width={1024} height={1536} fetchPriority="high" decoding="async"
@@ -98,11 +98,11 @@ function Hero() {
           {/* Emerald duotone tint */}
           <div className="absolute inset-0 bg-primary mix-blend-color" />
           {/* Stronger emerald presence in light mode */}
-          <div className="absolute inset-0 bg-primary/60 mix-blend-multiply dark:hidden" />
+          <div className="absolute inset-0 bg-primary/70 mix-blend-multiply dark:hidden" />
           {/* Dark areas pulled toward ink for depth (dark mode) */}
           <div className="absolute inset-0 hidden bg-panel mix-blend-multiply opacity-45 dark:block" />
           {/* Readability wash, stronger behind the text side */}
-          <div className="absolute inset-0 bg-background/20 [mask-image:linear-gradient(to_left,transparent_20%,black_80%)] rtl:[mask-image:linear-gradient(to_right,transparent_20%,black_80%)]" />
+          <div className="absolute inset-0 bg-background/10 [mask-image:linear-gradient(to_left,transparent_20%,black_80%)] rtl:[mask-image:linear-gradient(to_right,transparent_20%,black_80%)]" />
         </div>
       </div>
 
