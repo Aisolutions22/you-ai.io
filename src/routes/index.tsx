@@ -70,8 +70,6 @@ function Hero() {
   const t = useT();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const yPortrait = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   const [openIdx, setOpenIdx] = useState<number | null>(null);
