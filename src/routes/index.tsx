@@ -68,7 +68,6 @@ const WHY_ICONS = [Globe2, ShieldCheck, Database, Brain, Rocket, Gauge];
 /* ---------------- HERO ---------------- */
 function Hero() {
   const t = useT();
-  const { lang: _lang } = useI18n();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 120]);
@@ -90,21 +89,7 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative isolate overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_75%)]" />
-      <motion.div style={{ y: y1 }} className="pointer-events-none absolute -top-40 -start-40 hidden h-[620px] w-[620px] rounded-full bg-magenta/45 blur-[160px] animate-orb sm:block" />
-      <motion.div style={{ y: y2 }} className="pointer-events-none absolute top-20 end-[-180px] hidden h-[520px] w-[520px] rounded-full bg-electric/35 blur-[160px] animate-orb sm:block" />
-      <div className="pointer-events-none absolute bottom-0 left-1/2 hidden h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-ember/20 blur-[180px] sm:block" />
-
-      <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
-        <img src={heroPortrait} alt="" aria-hidden loading="lazy" decoding="async"
-          className="absolute left-[42%] top-1/2 h-[120%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.12] blur-[26px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-      </div>
-
-      <div aria-hidden className="pointer-events-none absolute inset-0 lg:hidden">
-        <img src={heroPortraitSm} alt="" aria-hidden fetchPriority="high" decoding="async"
-          className="absolute left-1/2 top-1/2 h-[110%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 object-contain object-center opacity-[0.18] [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/80" />
-      </div>
+      <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_75%)]" />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-2 pb-6 sm:pt-4 sm:pb-10 lg:pt-6">
         <div className="grid items-center gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
@@ -151,10 +136,12 @@ function Hero() {
           </div>
 
           <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }} style={{ y: yPortrait }}
-            className="relative mx-auto hidden h-[340px] w-full max-w-[440px] lg:block lg:h-[460px]">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,var(--primary),transparent_62%)] opacity-20 blur-2xl" />
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_75%,var(--gold),transparent_60%)] opacity-15 blur-2xl" />
-            <HeroVisual />
+            className="relative mx-auto h-[280px] w-full max-w-[320px] sm:h-[340px] sm:max-w-[380px] lg:h-[460px] lg:max-w-[420px]">
+            <picture>
+              <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
+              <img src={heroPortrait} alt="AI-powered transformation" width={1024} height={1536} fetchPriority="high" decoding="async"
+                className="relative h-full w-full object-contain object-center ltr:-scale-x-100" />
+            </picture>
           </motion.div>
         </div>
 
