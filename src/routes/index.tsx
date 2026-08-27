@@ -93,7 +93,7 @@ function Hero() {
           <picture>
             <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
             <img src={heroPortrait} alt="" width={1024} height={1536} fetchPriority="high" decoding="async"
-              className="h-full w-full object-cover object-[65%_center] grayscale contrast-[1.05] brightness-[1.02] lg:object-[70%_top]" />
+              className="h-full w-full object-cover object-[65%_center] grayscale contrast-[1.1] brightness-[0.72] dark:contrast-[1.05] dark:brightness-[1.02] lg:object-[70%_top]" />
           </picture>
           {/* Emerald duotone tint */}
           <div className="absolute inset-0 bg-primary mix-blend-color" />
