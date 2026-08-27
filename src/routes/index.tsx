@@ -89,7 +89,7 @@ function Hero() {
 
       {/* Duotone portrait backdrop — grayscale base + emerald tint, faded toward the text side */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 opacity-[0.7] dark:opacity-[0.55] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] lg:[mask-image:linear-gradient(to_left,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)] lg:rtl:[mask-image:linear-gradient(to_right,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)]">
+        <div className="absolute inset-0 opacity-[0.7] dark:opacity-[0.55] [mask-image:linear-gradient(to_top,black_0%,black_40%,transparent_85%)] lg:[mask-image:linear-gradient(to_left,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)] lg:rtl:[mask-image:linear-gradient(to_right,black_25%,rgba(0,0,0,0.45)_60%,transparent_95%)]">
           <picture>
             <source srcSet={heroPortraitSm} media="(max-width: 1023px)" />
             <img src={heroPortrait} alt="" width={1024} height={1536} fetchPriority="high" decoding="async"
