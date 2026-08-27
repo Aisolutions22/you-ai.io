@@ -173,27 +173,27 @@ function Hero() {
 
               {/* Floating capability chips */}
               <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute -top-4 left-0 z-20 flex items-center gap-2 rounded-xl bg-card px-3 py-2 shadow-card">
+                className="absolute -top-4 left-0 z-20 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <MessageCircle className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">واتساب</span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute -top-4 right-0 z-20 flex items-center gap-2 rounded-xl bg-card px-3 py-2 shadow-card">
+                className="absolute -top-4 right-0 z-20 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <Globe className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">موقع ويب</span>
               </motion.div>
               <motion.div initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.7 }}
-                className="absolute -left-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl bg-card px-3 py-2 shadow-card">
+                className="absolute -left-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <Users className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">CRM</span>
               </motion.div>
               <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -right-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl bg-card px-3 py-2 shadow-card">
+                className="absolute -right-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <Database className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">قاعدة بيانات</span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.9 }}
-                className="absolute -bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-xl bg-card px-3 py-2 shadow-card">
+                className="absolute -bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <BarChart3 className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">تحليلات</span>
               </motion.div>
