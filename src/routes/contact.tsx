@@ -130,8 +130,8 @@ function ContactPage() {
 
           <div className="grid gap-4">
             <InfoCard icon={MapPin} title={t.contact.cards.hq.title} lines={t.contact.cards.hq.lines} />
-            <InfoCard icon={Mail} title={t.contact.cards.email.title} lines={t.contact.cards.email.lines} />
-            <InfoCard icon={Phone} title={t.contact.cards.phone.title} lines={t.contact.cards.phone.lines} />
+            <InfoCard icon={Mail} title={t.contact.cards.email.title} lines={t.contact.cards.email.lines} ltr />
+            <InfoCard icon={Phone} title={t.contact.cards.phone.title} lines={t.contact.cards.phone.lines} ltr />
             <div className="glass-strong rounded-3xl p-7 shadow-card relative overflow-hidden">
               <div className="absolute -top-16 -end-16 h-44 w-44 rounded-full bg-magenta/30 blur-3xl" />
               <div className="relative">
@@ -155,7 +155,7 @@ function Field({ label, error, children }: { label: string; error?: string; chil
     </div>
   );
 }
-function InfoCard({ icon: Icon, title, lines }: { icon: any; title: string; lines: string[] }) {
+function InfoCard({ icon: Icon, title, lines, ltr }: { icon: any; title: string; lines: string[]; ltr?: boolean }) {
   return (
     <div className="glass rounded-2xl p-5 flex gap-4 items-start">
       <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand shadow-glow shrink-0">
@@ -163,7 +163,9 @@ function InfoCard({ icon: Icon, title, lines }: { icon: any; title: string; line
       </div>
       <div>
         <div className="text-xs uppercase tracking-widest text-muted-foreground">{title}</div>
-        {lines.map((l) => <div key={l} className="text-sm mt-0.5">{l}</div>)}
+        {lines.map((l) => (
+          <div key={l} dir={ltr ? "ltr" : undefined} className={`text-sm mt-0.5 ${ltr ? "text-start" : ""}`}>{l}</div>
+        ))}
       </div>
     </div>
   );
