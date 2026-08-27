@@ -269,6 +269,20 @@ const en: Dictionary = {
       { k: "Operational excellence", d: "Lean operating models, automation-first design and continuous performance tuning." },
     ],
   },
+  saudiMarket: {
+    eyebrow: "Saudi Market",
+    title1: "AI Solutions Built for the",
+    titleHi: "Saudi Business Landscape",
+    title2: ".",
+    sub: "You AI understands the Saudi business environment — from regulatory context to operational reality. We build scalable AI and automation solutions around real workflows, not slideware.",
+    cta: "Explore Solutions for Your Industry",
+    bullets: [
+      { k: "Saudi market understanding", d: "Bilingual AR/EN delivery and local operating context built into every solution." },
+      { k: "Enterprise-grade technology", d: "Secure, scalable systems designed for real business workloads and growth." },
+      { k: "Business transformation", d: "Workflow automation and AI agents tuned to your P&L, not generic demos." },
+      { k: "Long-term partnership", d: "Continuous optimization and adoption support from pilot to nationwide rollout." },
+    ],
+  },
   insights: {
     eyebrow: "Insights",
     title1: "Executive perspectives on",
@@ -748,6 +762,20 @@ const ar: Dictionary = {
       { k: "استراتيجية تبنّي الذكاء الاصطناعي", d: "إدارة تغيير وتدريب وخطط تبنّي للقيادات والميدان معاً." },
       { k: "التوافق مع رؤية 2030", d: "برامج مرتبطة ببرنامج التحول الوطني ورؤية المملكة والأجندات الرقمية لكل قطاع." },
       { k: "التميّز التشغيلي", d: "نماذج تشغيل رشيقة، تصميم يبدأ بالأتمتة، وضبط أداء مستمر." },
+    ],
+  },
+  saudiMarket: {
+    eyebrow: "السوق السعودي",
+    title1: "حلول ذكاء اصطناعي مبنية",
+    titleHi: "للبيئة التجارية السعودية",
+    title2: ".",
+    sub: "تفهم You AI البيئة التجارية السعودية — من السياق التنظيمي إلى واقع التشغيل. نبني حلول ذكاء اصطناعي وأتمتة قابلة للتوسع حول سير العمل الفعلية، وليس العروض النظرية.",
+    cta: "استكشف حلول قطاعك",
+    bullets: [
+      { k: "فهم السوق السعودي", d: "تنفيذ ثنائي اللغة وسياق تشغيلي محلي مدمج في كل حل." },
+      { k: "تقنية على مستوى المؤسسات", d: "أنظمة آمنة وقابلة للتوسع مصممة لأحمال العمل والنمو الحقيقي." },
+      { k: "تحول الأعمال", d: "أتمتة سير العمل ووكلاء ذكاء اصطناعي مضبوطة على أداء شركتك، وليس عروضاً عامة." },
+      { k: "شراكة طويلة المدى", d: "تحسين مستمر ودعم تبنّي من التجربة الأولى حتى النشر الوطني." },
     ],
   },
   insights: {

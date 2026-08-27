@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import {
   Hero, JourneyTeaser, Capabilities, Industries, Assessment,
-  ROITeaser, WhyYouAI, Insights, FinalCTA,
+  ROITeaser, SaudiMarket, Insights, FinalCTA,
 } from "@/components/site/sections";
 import heroPortrait from "@/assets/hero-ai-portrait.webp";
 import heroPortraitSm from "@/assets/hero-ai-portrait-sm.webp";
@@ -34,7 +34,7 @@ function HomePage() {
       <Band tone="alt"><Industries /></Band>
       <Band><Assessment /></Band>
       <Band tone="alt"><ROITeaser /></Band>
-      <Band><WhyYouAI /></Band>
+      <Band><SaudiMarket /></Band>
       <Band tone="alt"><Insights /></Band>
       <FinalCTA />
     </SiteLayout>

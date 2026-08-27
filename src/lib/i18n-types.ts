@@ -82,6 +82,10 @@ export interface Dictionary {
     eyebrow: string; title1: string; titleHi: string; title2: string;
     items: { k: string; d: string }[];
   };
+  saudiMarket: {
+    eyebrow: string; title1: string; titleHi: string; title2: string; sub: string; cta: string;
+    bullets: { k: string; d: string }[];
+  };
   insights: {
     eyebrow: string; title1: string; titleHi: string; title2: string; sub: string;
     minRead: string; read: string;
