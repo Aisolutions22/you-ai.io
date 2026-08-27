@@ -97,10 +97,12 @@ function Hero() {
           </picture>
           {/* Emerald duotone tint */}
           <div className="absolute inset-0 bg-primary mix-blend-color" />
-          {/* Dark areas pulled toward ink for depth */}
-          <div className="absolute inset-0 bg-panel mix-blend-multiply opacity-30 dark:opacity-45" />
+          {/* Stronger emerald presence in light mode */}
+          <div className="absolute inset-0 bg-primary/60 mix-blend-multiply dark:hidden" />
+          {/* Dark areas pulled toward ink for depth (dark mode) */}
+          <div className="absolute inset-0 hidden bg-panel mix-blend-multiply opacity-45 dark:block" />
           {/* Readability wash, stronger behind the text side */}
-          <div className="absolute inset-0 bg-background/25 [mask-image:linear-gradient(to_left,transparent_20%,black_80%)] rtl:[mask-image:linear-gradient(to_right,transparent_20%,black_80%)]" />
+          <div className="absolute inset-0 bg-background/20 [mask-image:linear-gradient(to_left,transparent_20%,black_80%)] rtl:[mask-image:linear-gradient(to_right,transparent_20%,black_80%)]" />
         </div>
       </div>
 
