@@ -269,6 +269,20 @@ const en: Dictionary = {
       { k: "Operational excellence", d: "Lean operating models, automation-first design and continuous performance tuning." },
     ],
   },
+  saudiMarket: {
+    eyebrow: "Saudi Market",
+    title1: "AI Solutions Built for the",
+    titleHi: "Saudi Business Landscape",
+    title2: ".",
+    sub: "You AI understands the Saudi business environment — from regulatory context to operational reality. We build scalable AI and automation solutions around real workflows, not slideware.",
+    cta: "Explore Solutions for Your Industry",
+    bullets: [
+      { k: "Saudi market understanding", d: "Bilingual AR/EN delivery and local operating context built into every solution." },
+      { k: "Enterprise-grade technology", d: "Secure, scalable systems designed for real business workloads and growth." },
+      { k: "Business transformation", d: "Workflow automation and AI agents tuned to your P&L, not generic demos." },
+      { k: "Long-term partnership", d: "Continuous optimization and adoption support from pilot to nationwide rollout." },
+    ],
+  },
   insights: {
     eyebrow: "Insights",
     title1: "Executive perspectives on",
