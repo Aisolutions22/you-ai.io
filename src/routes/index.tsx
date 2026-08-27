@@ -559,21 +559,10 @@ function Industries() {
       <SectionHeading
         eyebrow={t.industries.eyebrow}
         title={<>{t.industries.title1} <span className="text-gradient italic">{t.industries.titleHi}</span> {t.industries.title2}</>}
+        description="نفهم تحديات كل قطاع ونبني حلول ذكاء اصطناعي وأتمتة تعزز الكفاءة، تخفض التكاليف، وتحقق نتائج ملموسة."
       />
-      <div className="mt-10 flex flex-wrap justify-center gap-2.5">
-        {t.industries.items.map((s, i) => {
-          const Icon = INDUSTRY_ICONS[i];
-          return (
-            <Link
-              key={s.k}
-              to="/industries"
-              className="group inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm hover:bg-white/10 transition-colors"
-            >
-              <Icon className="h-4 w-4 text-electric" />
-              <span>{s.k}</span>
-            </Link>
-          );
-        })}
+      <div className="mt-10">
+        <IndustryCards />
       </div>
       <TeaserLinks links={[{ to: "/industries", label: t.common.exploreProgram }]} />
     </Section>
