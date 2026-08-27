@@ -88,6 +88,20 @@ function Hero() {
       {/* Calm light background — very soft emerald tint in the top corner, no glows */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--primary)_6%,var(--background))_0%,var(--background)_60%)]" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_50%_0%,color-mix(in_srgb,var(--primary)_9%,transparent),transparent_70%)]" />
+      {/* Mobile: portrait as extended section backdrop behind all hero content */}
+      <img
+        aria-hidden="true"
+        src={heroPortraitSm}
+        alt=""
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
+        className="pointer-events-none absolute inset-x-0 top-0 h-full w-full object-cover object-top opacity-20 lg:hidden"
+        style={{
+          maskImage: "linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 40%, transparent 85%)",
+          WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 40%, transparent 85%)",
+        }}
+      />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-2 pb-6 sm:pt-4 sm:pb-10 lg:pt-6">
         <div className="grid items-center gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
@@ -133,8 +147,58 @@ function Hero() {
             </motion.div>
           </div>
 
-          {/* Visual space for the duotone portrait backdrop */}
-          <div className="hidden lg:block" />
+          {/* Desktop visual: original full-color portrait with connected capability chips */}
+          <div className="relative hidden lg:block">
+            <div className="relative mx-auto w-full max-w-md">
+              {/* Dotted connector lines (primary color) from portrait center to each chip */}
+              <svg aria-hidden="true" viewBox="0 0 400 480" className="pointer-events-none absolute -inset-x-12 -inset-y-8 h-[calc(100%+4rem)] w-[calc(100%+6rem)] overflow-visible">
+                <line x1="200" y1="240" x2="60" y2="60" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.55" />
+                <line x1="200" y1="240" x2="340" y2="60" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.55" />
+                <line x1="200" y1="240" x2="40" y2="240" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.55" />
+                <line x1="200" y1="240" x2="360" y2="240" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.55" />
+                <line x1="200" y1="240" x2="200" y2="460" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.55" />
+              </svg>
+
+              <motion.img
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                src={heroPortrait}
+                alt={t.hero.headlineEn1}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                className="relative z-10 w-full rounded-3xl object-cover"
+              />
+
+              {/* Floating capability chips */}
+              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }}
+                className="absolute -top-4 left-0 z-20 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
+                <MessageCircle className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium">واتساب</span>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 }}
+                className="absolute -top-4 right-0 z-20 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
+                <Globe className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium">موقع ويب</span>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.7 }}
+                className="absolute -left-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
+                <Users className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium">CRM</span>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.8 }}
+                className="absolute -right-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
+                <Database className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium">قاعدة بيانات</span>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.9 }}
+                className="absolute -bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
+                <BarChart3 className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium">تحليلات</span>
+              </motion.div>
+            </div>
+          </div>
         </div>
 
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.55 }}
@@ -145,6 +209,17 @@ function Hero() {
               <div className="mt-1 text-[11px] leading-tight text-muted-foreground">{s.v}</div>
             </div>
           ))}
+        </motion.div>
+
+        {/* Trusted-by strip (placeholder logos — to be replaced with real clients) */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.65 }}
+          className="mx-auto mt-8 max-w-4xl text-center">
+          <div className="text-xs text-muted-foreground">يثق بنا أصحاب الأعمال لبناء أنظمتهم الذكية</div>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+            {["Nova Tech", "Falcon Group", "Zenith Retail", "Orbit Finance", "Vertex Care"].map((name) => (
+              <span key={name} dir="ltr" className="font-display text-sm tracking-wide text-muted-foreground/70">{name}</span>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }} className="relative mt-10 sm:mt-14">
