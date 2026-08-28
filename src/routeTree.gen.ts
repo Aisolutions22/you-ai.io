@@ -20,6 +20,7 @@ import { Route as AiProductsRouteImport } from './routes/ai-products'
 import { Route as AiAssessmentRouteImport } from './routes/ai-assessment'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolutionsVibeCodingRouteImport } from './routes/solutions.vibe-coding'
 import { Route as SolutionsDashboardsRouteImport } from './routes/solutions.dashboards'
 import { Route as SolutionsChatbotsRouteImport } from './routes/solutions.chatbots'
 import { Route as SolutionsAutomationRouteImport } from './routes/solutions.automation'
@@ -79,6 +80,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsVibeCodingRoute = SolutionsVibeCodingRouteImport.update({
+  id: '/solutions/vibe-coding',
+  path: '/solutions/vibe-coding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsDashboardsRoute = SolutionsDashboardsRouteImport.update({
   id: '/solutions/dashboards',
   path: '/solutions/dashboards',
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
   '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
   '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
   '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/solutions/automation'
     | '/solutions/chatbots'
     | '/solutions/dashboards'
+    | '/solutions/vibe-coding'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/solutions/automation'
     | '/solutions/chatbots'
     | '/solutions/dashboards'
+    | '/solutions/vibe-coding'
   id:
     | '__root__'
     | '/'
@@ -193,6 +204,7 @@ export interface FileRouteTypes {
     | '/solutions/automation'
     | '/solutions/chatbots'
     | '/solutions/dashboards'
+    | '/solutions/vibe-coding'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -210,6 +222,7 @@ export interface RootRouteChildren {
   SolutionsAutomationRoute: typeof SolutionsAutomationRoute
   SolutionsChatbotsRoute: typeof SolutionsChatbotsRoute
   SolutionsDashboardsRoute: typeof SolutionsDashboardsRoute
+  SolutionsVibeCodingRoute: typeof SolutionsVibeCodingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -291,6 +304,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/vibe-coding': {
+      id: '/solutions/vibe-coding'
+      path: '/solutions/vibe-coding'
+      fullPath: '/solutions/vibe-coding'
+      preLoaderRoute: typeof SolutionsVibeCodingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/dashboards': {
       id: '/solutions/dashboards'
       path: '/solutions/dashboards'
@@ -330,6 +350,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsAutomationRoute: SolutionsAutomationRoute,
   SolutionsChatbotsRoute: SolutionsChatbotsRoute,
   SolutionsDashboardsRoute: SolutionsDashboardsRoute,
+  SolutionsVibeCodingRoute: SolutionsVibeCodingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
