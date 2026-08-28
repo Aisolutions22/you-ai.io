@@ -13,6 +13,20 @@ const en: Dictionary = {
     contact: "Contact",
     cta: "Get Your AI Growth Roadmap",
     menu: "Menu",
+    solutions: "Solutions",
+  },
+  solutionsMenu: {
+    assessmentLabel: "AI Readiness Assessment",
+    assessmentTagline: "Get your score in 3 minutes",
+    roiLabel: "ROI Calculator",
+    roiTagline: "Estimate your savings",
+    items: [
+      { key: "automation", title: "Automation", tagline: "Connect your systems, cut manual work", href: "/solutions/automation" },
+      { key: "chatbots", title: "Chatbots", tagline: "AI agents that answer, book, and sell", href: "/solutions/chatbots" },
+      { key: "dashboards", title: "Dashboards", tagline: "See your business in real time", href: "/solutions/dashboards" },
+      { key: "vibe-coding", title: "Vibe Coding", tagline: "Custom tools, built in days not months", href: "/solutions/vibe-coding" },
+      { key: "enterprise", title: "Enterprise Transformation", tagline: "Full-scale AI transformation partner", href: "/solutions/enterprise-transformation" },
+    ],
   },
   common: {
     explore: "Explore Solutions",
