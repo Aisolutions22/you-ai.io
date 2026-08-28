@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { LeadDialog } from "./LeadDialog";
 import { LanguageSwitcher } from "./LanguageSwitcher";
