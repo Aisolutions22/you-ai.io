@@ -508,6 +508,20 @@ const ar: Dictionary = {
 
     cta: "احصل على خارطة طريق النمو بالذكاء الاصطناعي",
     menu: "القائمة",
+    solutions: "الحلول",
+  },
+  solutionsMenu: {
+    assessmentLabel: "تقييم الجاهزية للذكاء الاصطناعي",
+    assessmentTagline: "اعرف نتيجتك في 3 دقائق",
+    roiLabel: "حاسبة العائد على الاستثمار",
+    roiTagline: "احسب التوفير المتوقع لشركتك",
+    items: [
+      { key: "automation", title: "أتمتة العمليات", tagline: "اربط أنظمتك وقلّل العمل اليدوي", href: "/solutions/automation" },
+      { key: "chatbots", title: "روبوتات الدردشة", tagline: "وكلاء ذكاء اصطناعي يردّون ويحجزون ويبيعون", href: "/solutions/chatbots" },
+      { key: "dashboards", title: "لوحات التحكم", tagline: "شاهد أداء شركتك لحظياً", href: "/solutions/dashboards" },
+      { key: "vibe-coding", title: "Vibe Coding", tagline: "أنظمة مخصصة تُبنى في أيام لا شهور", href: "/solutions/vibe-coding" },
+      { key: "enterprise", title: "تحول رقمي شامل للمؤسسات", tagline: "شريك تحول كامل لمؤسستك", href: "/solutions/enterprise-transformation" },
+    ],
   },
   common: {
     explore: "استكشف الحلول",
