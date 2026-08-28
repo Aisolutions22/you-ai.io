@@ -20,6 +20,11 @@ import { Route as AiProductsRouteImport } from './routes/ai-products'
 import { Route as AiAssessmentRouteImport } from './routes/ai-assessment'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolutionsVibeCodingRouteImport } from './routes/solutions.vibe-coding'
+import { Route as SolutionsEnterpriseTransformationRouteImport } from './routes/solutions.enterprise-transformation'
+import { Route as SolutionsDashboardsRouteImport } from './routes/solutions.dashboards'
+import { Route as SolutionsChatbotsRouteImport } from './routes/solutions.chatbots'
+import { Route as SolutionsAutomationRouteImport } from './routes/solutions.automation'
 
 const TransformationStoriesRoute = TransformationStoriesRouteImport.update({
   id: '/transformation-stories',
@@ -76,6 +81,32 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsVibeCodingRoute = SolutionsVibeCodingRouteImport.update({
+  id: '/solutions/vibe-coding',
+  path: '/solutions/vibe-coding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsEnterpriseTransformationRoute =
+  SolutionsEnterpriseTransformationRouteImport.update({
+    id: '/solutions/enterprise-transformation',
+    path: '/solutions/enterprise-transformation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolutionsDashboardsRoute = SolutionsDashboardsRouteImport.update({
+  id: '/solutions/dashboards',
+  path: '/solutions/dashboards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsChatbotsRoute = SolutionsChatbotsRouteImport.update({
+  id: '/solutions/chatbots',
+  path: '/solutions/chatbots',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsAutomationRoute = SolutionsAutomationRouteImport.update({
+  id: '/solutions/automation',
+  path: '/solutions/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +120,11 @@ export interface FileRoutesByFullPath {
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
+  '/solutions/automation': typeof SolutionsAutomationRoute
+  '/solutions/chatbots': typeof SolutionsChatbotsRoute
+  '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/enterprise-transformation': typeof SolutionsEnterpriseTransformationRoute
+  '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +138,11 @@ export interface FileRoutesByTo {
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
+  '/solutions/automation': typeof SolutionsAutomationRoute
+  '/solutions/chatbots': typeof SolutionsChatbotsRoute
+  '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/enterprise-transformation': typeof SolutionsEnterpriseTransformationRoute
+  '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +157,11 @@ export interface FileRoutesById {
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
+  '/solutions/automation': typeof SolutionsAutomationRoute
+  '/solutions/chatbots': typeof SolutionsChatbotsRoute
+  '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/enterprise-transformation': typeof SolutionsEnterpriseTransformationRoute
+  '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +177,11 @@ export interface FileRouteTypes {
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
+    | '/solutions/automation'
+    | '/solutions/chatbots'
+    | '/solutions/dashboards'
+    | '/solutions/enterprise-transformation'
+    | '/solutions/vibe-coding'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +195,11 @@ export interface FileRouteTypes {
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
+    | '/solutions/automation'
+    | '/solutions/chatbots'
+    | '/solutions/dashboards'
+    | '/solutions/enterprise-transformation'
+    | '/solutions/vibe-coding'
   id:
     | '__root__'
     | '/'
@@ -157,6 +213,11 @@ export interface FileRouteTypes {
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
+    | '/solutions/automation'
+    | '/solutions/chatbots'
+    | '/solutions/dashboards'
+    | '/solutions/enterprise-transformation'
+    | '/solutions/vibe-coding'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +232,11 @@ export interface RootRouteChildren {
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   TransformationJourneyRoute: typeof TransformationJourneyRoute
   TransformationStoriesRoute: typeof TransformationStoriesRoute
+  SolutionsAutomationRoute: typeof SolutionsAutomationRoute
+  SolutionsChatbotsRoute: typeof SolutionsChatbotsRoute
+  SolutionsDashboardsRoute: typeof SolutionsDashboardsRoute
+  SolutionsEnterpriseTransformationRoute: typeof SolutionsEnterpriseTransformationRoute
+  SolutionsVibeCodingRoute: typeof SolutionsVibeCodingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +318,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/vibe-coding': {
+      id: '/solutions/vibe-coding'
+      path: '/solutions/vibe-coding'
+      fullPath: '/solutions/vibe-coding'
+      preLoaderRoute: typeof SolutionsVibeCodingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/enterprise-transformation': {
+      id: '/solutions/enterprise-transformation'
+      path: '/solutions/enterprise-transformation'
+      fullPath: '/solutions/enterprise-transformation'
+      preLoaderRoute: typeof SolutionsEnterpriseTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/dashboards': {
+      id: '/solutions/dashboards'
+      path: '/solutions/dashboards'
+      fullPath: '/solutions/dashboards'
+      preLoaderRoute: typeof SolutionsDashboardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/chatbots': {
+      id: '/solutions/chatbots'
+      path: '/solutions/chatbots'
+      fullPath: '/solutions/chatbots'
+      preLoaderRoute: typeof SolutionsChatbotsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions/automation': {
+      id: '/solutions/automation'
+      path: '/solutions/automation'
+      fullPath: '/solutions/automation'
+      preLoaderRoute: typeof SolutionsAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +368,12 @@ const rootRouteChildren: RootRouteChildren = {
   RoiCalculatorRoute: RoiCalculatorRoute,
   TransformationJourneyRoute: TransformationJourneyRoute,
   TransformationStoriesRoute: TransformationStoriesRoute,
+  SolutionsAutomationRoute: SolutionsAutomationRoute,
+  SolutionsChatbotsRoute: SolutionsChatbotsRoute,
+  SolutionsDashboardsRoute: SolutionsDashboardsRoute,
+  SolutionsEnterpriseTransformationRoute:
+    SolutionsEnterpriseTransformationRoute,
+  SolutionsVibeCodingRoute: SolutionsVibeCodingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

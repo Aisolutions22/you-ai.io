@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { LeadDialog } from "./LeadDialog";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -11,10 +11,12 @@ export function Navbar() {
   const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [solOpen, setSolOpen] = useState(false);
+  const [mobileSolOpen, setMobileSolOpen] = useState(false);
+  const solRef = useRef<HTMLLIElement>(null);
 
   const NAV: { to: any; label: string; exact?: boolean }[] = [
     { to: "/", label: t.nav.home, exact: true },
-    { to: "/business-engines", label: t.nav.engines },
     { to: "/industries", label: t.nav.industries },
     { to: "/ai-products", label: t.nav.products },
     { to: "/ai-assessment", label: t.nav.assessment },
@@ -40,17 +42,58 @@ export function Navbar() {
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex lg:gap-2 xl:gap-3">
-            {NAV.map((item) => (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
-                  activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}
-                  activeOptions={{ exact: !!item.exact }}
-                >
-                  {item.label}
-                </Link>
-              </li>
+            {NAV.map((item, idx) => (
+              <Fragment key={item.to}>
+                <li>
+                  <Link
+                    to={item.to}
+                    className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
+                    activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}
+                    activeOptions={{ exact: !!item.exact }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+                {idx === 0 && (
+                  <li ref={solRef} className="relative" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
+                    <button
+                      type="button"
+                      aria-expanded={solOpen}
+                      onClick={() => setSolOpen((v) => !v)}
+                      className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
+                    >
+                      {t.nav.solutions}
+                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${solOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    {solOpen && (
+                      <div className="absolute start-0 top-full z-50 pt-3">
+                        <div className="w-80 rounded-2xl border border-border bg-popover p-2 shadow-card">
+                          {t.solutionsMenu.items.map((s) => (
+                            <Link
+                              key={s.key}
+                              to={s.href as any}
+                              onClick={() => setSolOpen(false)}
+                              className="block rounded-xl px-3 py-2 transition-colors hover:bg-muted/60"
+                            >
+                              <span className="block text-sm font-medium text-foreground">{s.title}</span>
+                              <span className="block text-xs text-muted-foreground">{s.tagline}</span>
+                            </Link>
+                          ))}
+                          <div className="my-2 h-px bg-border" />
+                          <Link to="/ai-assessment" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60">
+                            <span className="block text-sm font-medium text-primary">{t.solutionsMenu.assessmentLabel}</span>
+                            <span className="block text-xs text-muted-foreground">{t.solutionsMenu.assessmentTagline}</span>
+                          </Link>
+                          <Link to="/roi-calculator" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60">
+                            <span className="block text-sm font-medium text-primary">{t.solutionsMenu.roiLabel}</span>
+                            <span className="block text-xs text-muted-foreground">{t.solutionsMenu.roiTagline}</span>
+                          </Link>
+                        </div>
+                      </div>
+                    )}
+                  </li>
+                )}
+              </Fragment>
             ))}
           </ul>
 
@@ -77,12 +120,49 @@ export function Navbar() {
           <div className="lg:hidden mt-2 glass-strong rounded-2xl p-3">
 
             <ul className="grid gap-1">
-              {NAV.map((item) => (
-                <li key={item.to}>
-                  <Link to={item.to} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">
-                    {item.label}
-                  </Link>
-                </li>
+              {NAV.map((item, idx) => (
+                <Fragment key={item.to}>
+                  <li>
+                    <Link to={item.to} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">
+                      {item.label}
+                    </Link>
+                  </li>
+                  {idx === 0 && (
+                    <li>
+                      <button
+                        type="button"
+                        aria-expanded={mobileSolOpen}
+                        onClick={() => setMobileSolOpen((v) => !v)}
+                        className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm hover:bg-white/5"
+                      >
+                        {t.nav.solutions}
+                        <ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobileSolOpen && (
+                        <ul className="mt-1 grid gap-1 border-s border-border ps-3">
+                          {t.solutionsMenu.items.map((s) => (
+                            <li key={s.key}>
+                              <Link to={s.href as any} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-white/5">
+                                <span className="block text-sm">{s.title}</span>
+                                <span className="block text-xs text-muted-foreground">{s.tagline}</span>
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <Link to="/ai-assessment" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">
+                              {t.solutionsMenu.assessmentLabel}
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="/roi-calculator" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">
+                              {t.solutionsMenu.roiLabel}
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </li>
+                  )}
+                </Fragment>
               ))}
               <li>
                 <LeadDialog variant="roadmap">

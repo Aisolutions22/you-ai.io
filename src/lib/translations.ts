@@ -13,6 +13,20 @@ const en: Dictionary = {
     contact: "Contact",
     cta: "Get Your AI Growth Roadmap",
     menu: "Menu",
+    solutions: "Solutions",
+  },
+  solutionsMenu: {
+    assessmentLabel: "AI Readiness Assessment",
+    assessmentTagline: "Get your score in 3 minutes",
+    roiLabel: "ROI Calculator",
+    roiTagline: "Estimate your savings",
+    items: [
+      { key: "automation", title: "Automation", tagline: "Connect your systems, cut manual work", href: "/solutions/automation" },
+      { key: "chatbots", title: "Chatbots", tagline: "AI agents that answer, book, and sell", href: "/solutions/chatbots" },
+      { key: "dashboards", title: "Dashboards", tagline: "See your business in real time", href: "/solutions/dashboards" },
+      { key: "vibe-coding", title: "Vibe Coding", tagline: "Custom tools, built in days not months", href: "/solutions/vibe-coding" },
+      { key: "enterprise", title: "Enterprise Transformation", tagline: "Full-scale AI transformation partner", href: "/solutions/enterprise-transformation" },
+    ],
   },
   common: {
     explore: "Explore Solutions",
@@ -508,6 +522,20 @@ const ar: Dictionary = {
 
     cta: "احصل على خارطة طريق النمو بالذكاء الاصطناعي",
     menu: "القائمة",
+    solutions: "الحلول",
+  },
+  solutionsMenu: {
+    assessmentLabel: "تقييم الجاهزية للذكاء الاصطناعي",
+    assessmentTagline: "اعرف نتيجتك في 3 دقائق",
+    roiLabel: "حاسبة العائد على الاستثمار",
+    roiTagline: "احسب التوفير المتوقع لشركتك",
+    items: [
+      { key: "automation", title: "أتمتة العمليات", tagline: "اربط أنظمتك وقلّل العمل اليدوي", href: "/solutions/automation" },
+      { key: "chatbots", title: "روبوتات الدردشة", tagline: "وكلاء ذكاء اصطناعي يردّون ويحجزون ويبيعون", href: "/solutions/chatbots" },
+      { key: "dashboards", title: "لوحات التحكم", tagline: "شاهد أداء شركتك لحظياً", href: "/solutions/dashboards" },
+      { key: "vibe-coding", title: "Vibe Coding", tagline: "أنظمة مخصصة تُبنى في أيام لا شهور", href: "/solutions/vibe-coding" },
+      { key: "enterprise", title: "تحول رقمي شامل للمؤسسات", tagline: "شريك تحول كامل لمؤسستك", href: "/solutions/enterprise-transformation" },
+    ],
   },
   common: {
     explore: "استكشف الحلول",

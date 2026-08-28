@@ -5,7 +5,12 @@ export interface Dictionary {
   nav: {
     home: string; engines: string; industries: string; products: string;
     assessment: string; insights: string; about: string; contact: string;
-    cta: string; menu: string;
+    cta: string; menu: string; solutions: string;
+  };
+  solutionsMenu: {
+    assessmentLabel: string; assessmentTagline: string;
+    roiLabel: string; roiTagline: string;
+    items: { key: string; title: string; tagline: string; href: string }[];
   };
   common: {
     explore: string; learnMore: string; bookSession: string; bookExecutive: string;
