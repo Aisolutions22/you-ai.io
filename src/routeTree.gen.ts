@@ -20,6 +20,7 @@ import { Route as AiProductsRouteImport } from './routes/ai-products'
 import { Route as AiAssessmentRouteImport } from './routes/ai-assessment'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolutionsAutomationRouteImport } from './routes/solutions.automation'
 
 const TransformationStoriesRoute = TransformationStoriesRouteImport.update({
   id: '/transformation-stories',
@@ -76,6 +77,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsAutomationRoute = SolutionsAutomationRouteImport.update({
+  id: '/solutions/automation',
+  path: '/solutions/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
+  '/solutions/automation': typeof SolutionsAutomationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
+  '/solutions/automation': typeof SolutionsAutomationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/roi-calculator': typeof RoiCalculatorRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
+  '/solutions/automation': typeof SolutionsAutomationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
+    | '/solutions/automation'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
+    | '/solutions/automation'
   id:
     | '__root__'
     | '/'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '/roi-calculator'
     | '/transformation-journey'
     | '/transformation-stories'
+    | '/solutions/automation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +183,7 @@ export interface RootRouteChildren {
   RoiCalculatorRoute: typeof RoiCalculatorRoute
   TransformationJourneyRoute: typeof TransformationJourneyRoute
   TransformationStoriesRoute: typeof TransformationStoriesRoute
+  SolutionsAutomationRoute: typeof SolutionsAutomationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/automation': {
+      id: '/solutions/automation'
+      path: '/solutions/automation'
+      fullPath: '/solutions/automation'
+      preLoaderRoute: typeof SolutionsAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +287,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoiCalculatorRoute: RoiCalculatorRoute,
   TransformationJourneyRoute: TransformationJourneyRoute,
   TransformationStoriesRoute: TransformationStoriesRoute,
+  SolutionsAutomationRoute: SolutionsAutomationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
