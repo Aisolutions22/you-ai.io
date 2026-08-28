@@ -21,6 +21,7 @@ import { Route as AiAssessmentRouteImport } from './routes/ai-assessment'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsVibeCodingRouteImport } from './routes/solutions.vibe-coding'
+import { Route as SolutionsEnterpriseTransformationRouteImport } from './routes/solutions.enterprise-transformation'
 import { Route as SolutionsDashboardsRouteImport } from './routes/solutions.dashboards'
 import { Route as SolutionsChatbotsRouteImport } from './routes/solutions.chatbots'
 import { Route as SolutionsAutomationRouteImport } from './routes/solutions.automation'
@@ -85,6 +86,12 @@ const SolutionsVibeCodingRoute = SolutionsVibeCodingRouteImport.update({
   path: '/solutions/vibe-coding',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsEnterpriseTransformationRoute =
+  SolutionsEnterpriseTransformationRouteImport.update({
+    id: '/solutions/enterprise-transformation',
+    path: '/solutions/enterprise-transformation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SolutionsDashboardsRoute = SolutionsDashboardsRouteImport.update({
   id: '/solutions/dashboards',
   path: '/solutions/dashboards',
@@ -116,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
   '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/enterprise-transformation': typeof SolutionsEnterpriseTransformationRoute
   '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRoutesByTo {
@@ -133,6 +141,7 @@ export interface FileRoutesByTo {
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
   '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/enterprise-transformation': typeof SolutionsEnterpriseTransformationRoute
   '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRoutesById {
@@ -151,6 +160,7 @@ export interface FileRoutesById {
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
   '/solutions/dashboards': typeof SolutionsDashboardsRoute
+  '/solutions/enterprise-transformation': typeof SolutionsEnterpriseTransformationRoute
   '/solutions/vibe-coding': typeof SolutionsVibeCodingRoute
 }
 export interface FileRouteTypes {
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/solutions/automation'
     | '/solutions/chatbots'
     | '/solutions/dashboards'
+    | '/solutions/enterprise-transformation'
     | '/solutions/vibe-coding'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/solutions/automation'
     | '/solutions/chatbots'
     | '/solutions/dashboards'
+    | '/solutions/enterprise-transformation'
     | '/solutions/vibe-coding'
   id:
     | '__root__'
@@ -204,6 +216,7 @@ export interface FileRouteTypes {
     | '/solutions/automation'
     | '/solutions/chatbots'
     | '/solutions/dashboards'
+    | '/solutions/enterprise-transformation'
     | '/solutions/vibe-coding'
   fileRoutesById: FileRoutesById
 }
@@ -222,6 +235,7 @@ export interface RootRouteChildren {
   SolutionsAutomationRoute: typeof SolutionsAutomationRoute
   SolutionsChatbotsRoute: typeof SolutionsChatbotsRoute
   SolutionsDashboardsRoute: typeof SolutionsDashboardsRoute
+  SolutionsEnterpriseTransformationRoute: typeof SolutionsEnterpriseTransformationRoute
   SolutionsVibeCodingRoute: typeof SolutionsVibeCodingRoute
 }
 
@@ -311,6 +325,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsVibeCodingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/enterprise-transformation': {
+      id: '/solutions/enterprise-transformation'
+      path: '/solutions/enterprise-transformation'
+      fullPath: '/solutions/enterprise-transformation'
+      preLoaderRoute: typeof SolutionsEnterpriseTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/dashboards': {
       id: '/solutions/dashboards'
       path: '/solutions/dashboards'
@@ -350,6 +371,8 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsAutomationRoute: SolutionsAutomationRoute,
   SolutionsChatbotsRoute: SolutionsChatbotsRoute,
   SolutionsDashboardsRoute: SolutionsDashboardsRoute,
+  SolutionsEnterpriseTransformationRoute:
+    SolutionsEnterpriseTransformationRoute,
   SolutionsVibeCodingRoute: SolutionsVibeCodingRoute,
 }
 export const routeTree = rootRouteImport
