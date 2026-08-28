@@ -42,17 +42,58 @@ export function Navbar() {
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex lg:gap-2 xl:gap-3">
-            {NAV.map((item) => (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
-                  activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}
-                  activeOptions={{ exact: !!item.exact }}
-                >
-                  {item.label}
-                </Link>
-              </li>
+            {NAV.map((item, idx) => (
+              <>
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
+                    activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}
+                    activeOptions={{ exact: !!item.exact }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+                {idx === 0 && (
+                  <li key="solutions" ref={solRef} className="relative" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
+                    <button
+                      type="button"
+                      aria-expanded={solOpen}
+                      onClick={() => setSolOpen((v) => !v)}
+                      className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
+                    >
+                      {t.nav.solutions}
+                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${solOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    {solOpen && (
+                      <div className="absolute start-0 top-full z-50 pt-3">
+                        <div className="w-80 rounded-2xl border border-border bg-popover p-2 shadow-card">
+                          {t.solutionsMenu.items.map((s) => (
+                            <Link
+                              key={s.key}
+                              to={s.href as any}
+                              onClick={() => setSolOpen(false)}
+                              className="block rounded-xl px-3 py-2 transition-colors hover:bg-muted/60"
+                            >
+                              <span className="block text-sm font-medium text-foreground">{s.title}</span>
+                              <span className="block text-xs text-muted-foreground">{s.tagline}</span>
+                            </Link>
+                          ))}
+                          <div className="my-2 h-px bg-border" />
+                          <Link to="/ai-assessment" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60">
+                            <span className="block text-sm font-medium text-primary">{t.solutionsMenu.assessmentLabel}</span>
+                            <span className="block text-xs text-muted-foreground">{t.solutionsMenu.assessmentTagline}</span>
+                          </Link>
+                          <Link to="/roi-calculator" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60">
+                            <span className="block text-sm font-medium text-primary">{t.solutionsMenu.roiLabel}</span>
+                            <span className="block text-xs text-muted-foreground">{t.solutionsMenu.roiTagline}</span>
+                          </Link>
+                        </div>
+                      </div>
+                    )}
+                  </li>
+                )}
+              </>
             ))}
           </ul>
 
