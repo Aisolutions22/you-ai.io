@@ -20,6 +20,7 @@ import { Route as AiProductsRouteImport } from './routes/ai-products'
 import { Route as AiAssessmentRouteImport } from './routes/ai-assessment'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolutionsDashboardsRouteImport } from './routes/solutions.dashboards'
 import { Route as SolutionsChatbotsRouteImport } from './routes/solutions.chatbots'
 import { Route as SolutionsAutomationRouteImport } from './routes/solutions.automation'
 
@@ -78,6 +79,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsDashboardsRoute = SolutionsDashboardsRouteImport.update({
+  id: '/solutions/dashboards',
+  path: '/solutions/dashboards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsChatbotsRoute = SolutionsChatbotsRouteImport.update({
   id: '/solutions/chatbots',
   path: '/solutions/chatbots',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/transformation-stories': typeof TransformationStoriesRoute
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
+  '/solutions/dashboards': typeof SolutionsDashboardsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/transformation-stories': typeof TransformationStoriesRoute
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
+  '/solutions/dashboards': typeof SolutionsDashboardsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/transformation-stories': typeof TransformationStoriesRoute
   '/solutions/automation': typeof SolutionsAutomationRoute
   '/solutions/chatbots': typeof SolutionsChatbotsRoute
+  '/solutions/dashboards': typeof SolutionsDashboardsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/transformation-stories'
     | '/solutions/automation'
     | '/solutions/chatbots'
+    | '/solutions/dashboards'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/transformation-stories'
     | '/solutions/automation'
     | '/solutions/chatbots'
+    | '/solutions/dashboards'
   id:
     | '__root__'
     | '/'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/transformation-stories'
     | '/solutions/automation'
     | '/solutions/chatbots'
+    | '/solutions/dashboards'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,6 +209,7 @@ export interface RootRouteChildren {
   TransformationStoriesRoute: typeof TransformationStoriesRoute
   SolutionsAutomationRoute: typeof SolutionsAutomationRoute
   SolutionsChatbotsRoute: typeof SolutionsChatbotsRoute
+  SolutionsDashboardsRoute: typeof SolutionsDashboardsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -278,6 +291,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/dashboards': {
+      id: '/solutions/dashboards'
+      path: '/solutions/dashboards'
+      fullPath: '/solutions/dashboards'
+      preLoaderRoute: typeof SolutionsDashboardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/chatbots': {
       id: '/solutions/chatbots'
       path: '/solutions/chatbots'
@@ -309,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   TransformationStoriesRoute: TransformationStoriesRoute,
   SolutionsAutomationRoute: SolutionsAutomationRoute,
   SolutionsChatbotsRoute: SolutionsChatbotsRoute,
+  SolutionsDashboardsRoute: SolutionsDashboardsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
