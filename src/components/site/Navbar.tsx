@@ -120,12 +120,49 @@ export function Navbar() {
           <div className="lg:hidden mt-2 glass-strong rounded-2xl p-3">
 
             <ul className="grid gap-1">
-              {NAV.map((item) => (
-                <li key={item.to}>
-                  <Link to={item.to} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">
-                    {item.label}
-                  </Link>
-                </li>
+              {NAV.map((item, idx) => (
+                <Fragment key={item.to}>
+                  <li>
+                    <Link to={item.to} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">
+                      {item.label}
+                    </Link>
+                  </li>
+                  {idx === 0 && (
+                    <li>
+                      <button
+                        type="button"
+                        aria-expanded={mobileSolOpen}
+                        onClick={() => setMobileSolOpen((v) => !v)}
+                        className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm hover:bg-white/5"
+                      >
+                        {t.nav.solutions}
+                        <ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobileSolOpen && (
+                        <ul className="mt-1 grid gap-1 border-s border-border ps-3">
+                          {t.solutionsMenu.items.map((s) => (
+                            <li key={s.key}>
+                              <Link to={s.href as any} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-white/5">
+                                <span className="block text-sm">{s.title}</span>
+                                <span className="block text-xs text-muted-foreground">{s.tagline}</span>
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <Link to="/ai-assessment" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">
+                              {t.solutionsMenu.assessmentLabel}
+                            </Link>
+                          </li>
+                          <li>
+                            <Link to="/roi-calculator" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">
+                              {t.solutionsMenu.roiLabel}
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </li>
+                  )}
+                </Fragment>
               ))}
               <li>
                 <LeadDialog variant="roadmap">
