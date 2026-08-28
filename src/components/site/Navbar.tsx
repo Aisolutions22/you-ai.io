@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { LeadDialog } from "./LeadDialog";
@@ -43,8 +43,8 @@ export function Navbar() {
 
           <ul className="hidden items-center gap-1 lg:flex lg:gap-2 xl:gap-3">
             {NAV.map((item, idx) => (
-              <>
-                <li key={item.to}>
+              <Fragment key={item.to}>
+                <li>
                   <Link
                     to={item.to}
                     className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
@@ -55,7 +55,7 @@ export function Navbar() {
                   </Link>
                 </li>
                 {idx === 0 && (
-                  <li key="solutions" ref={solRef} className="relative" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
+                  <li ref={solRef} className="relative" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
                     <button
                       type="button"
                       aria-expanded={solOpen}
@@ -93,7 +93,7 @@ export function Navbar() {
                     )}
                   </li>
                 )}
-              </>
+              </Fragment>
             ))}
           </ul>
 
