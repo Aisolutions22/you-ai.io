@@ -11,10 +11,12 @@ export function Navbar() {
   const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [solOpen, setSolOpen] = useState(false);
+  const [mobileSolOpen, setMobileSolOpen] = useState(false);
+  const solRef = useRef<HTMLLIElement>(null);
 
   const NAV: { to: any; label: string; exact?: boolean }[] = [
     { to: "/", label: t.nav.home, exact: true },
-    { to: "/business-engines", label: t.nav.engines },
     { to: "/industries", label: t.nav.industries },
     { to: "/ai-products", label: t.nav.products },
     { to: "/ai-assessment", label: t.nav.assessment },
