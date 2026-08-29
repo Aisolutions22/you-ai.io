@@ -174,7 +174,7 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-2 pb-6 sm:pt-4 sm:pb-10 lg:pt-6">
-        <div className="grid items-center gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+        <div className="grid items-start gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
           <div className="relative z-10">
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center lg:justify-start">
               <SectionEyebrow>{t.hero.eyebrow}</SectionEyebrow>
@@ -249,27 +249,27 @@ export function Hero() {
               />
 
               {/* Floating capability chips */}
-              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }}
+              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 className="absolute -top-4 left-0 z-20 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <MessageCircle className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">واتساب</span>
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 }}
+              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
                 className="absolute -top-4 right-0 z-20 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <Globe className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">موقع ويب</span>
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.7 }}
+              <motion.div initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
                 className="absolute -left-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <Users className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">CRM</span>
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.8 }}
+              <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
                 className="absolute -right-12 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <Database className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">قاعدة بيانات</span>
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.9 }}
+              <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
                 className="absolute -bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-card">
                 <BarChart3 className="h-4 w-4 text-primary" />
                 <span className="text-xs font-medium">تحليلات</span>
