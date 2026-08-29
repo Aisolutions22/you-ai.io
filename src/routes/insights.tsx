@@ -27,6 +27,7 @@ function InsightsPage() {
     <SiteLayout>
       <Section>
         <SectionHeading
+          as="h1"
           eyebrow={t.insights.eyebrow}
           title={<>{t.insights.title1} <span className="text-gradient italic">{t.insights.titleHi}</span>{t.insights.title2}</>}
           description={t.insights.sub}

@@ -80,6 +80,7 @@ function ContactPage() {
     <SiteLayout>
       <Section>
         <SectionHeading
+          as="h1"
           eyebrow={t.contact.eyebrow}
           title={<>{t.contact.title1} <span className="text-gradient italic">{t.contact.titleHi}</span>{t.contact.title2}</>}
           description={t.contact.sub}

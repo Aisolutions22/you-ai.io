@@ -714,6 +714,7 @@ export function Journey() {
   return (
     <Section id="journey">
       <SectionHeading
+        as="h1"
         eyebrow={t.journey.eyebrow}
         title={<>{t.journey.title1} <span className="text-gradient italic">{t.journey.titleHi}</span> {t.journey.title2}</>}
         description={t.journey.sub}
@@ -793,6 +794,7 @@ export function ROICalculator() {
   return (
     <Section id="roi">
       <SectionHeading
+        as="h1"
         eyebrow={t.roi.eyebrow}
         title={<>{t.roi.title1} <span className="text-gradient italic">{t.roi.titleHi}</span> {t.roi.title2}</>}
         description={t.roi.sub}
@@ -876,6 +878,7 @@ export function Scenarios() {
   return (
     <Section id="scenarios">
       <SectionHeading
+        as="h1"
         eyebrow={t.scenarios.eyebrow}
         title={<>{t.scenarios.title1} <span className="text-gradient italic">{t.scenarios.titleHi}</span> {t.scenarios.title2}</>}
         description={t.scenarios.sub}
