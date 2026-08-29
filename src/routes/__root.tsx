@@ -68,8 +68,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "You AI  · Building AI-Powered Businesses" },
       { name: "twitter:description", content: "You AI — شريك تحوّل ذكاء اصطناعي مؤسسي للسعودية والخليج وعالمياً. Enterprise AI transformation for KSA, GCC and global businesses." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/KtqGVkh2ZOQmeKb7IKlh7rKzoS92/social-images/social-1782356336282-Gemini_Generated_Image_35nkjm35nkjm35nk.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/KtqGVkh2ZOQmeKb7IKlh7rKzoS92/social-images/social-1782356336282-Gemini_Generated_Image_35nkjm35nkjm35nk.webp" },
+      { property: "og:image", content: "https://you-ai-sa.lovable.app/og-image.jpg" },
+      { name: "twitter:image", content: "https://you-ai-sa.lovable.app/og-image.jpg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
