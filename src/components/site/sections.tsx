@@ -133,6 +133,8 @@ export function Scenarios() {
 
 export function FinalCTA() { return null; }
 export function Journey() { return null; }
+export const JourneyTeaser = Journey;
+export const ROITeaser = ROI;
 export function Capabilities() { return null; }
 export function Assessment() { return null; }
 export function ROI() { return null; }
