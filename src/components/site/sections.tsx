@@ -21,17 +21,33 @@ export function Hero() {
   const { t } = useI18n();
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const items = t.industries.items ?? [];
+  const h = t.hero;
   return (
     <section className="relative overflow-hidden py-20 lg:py-28">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-5xl text-center">
-          <Badge>{t.hero.badge}</Badge>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl">{t.hero.title}</h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">{t.hero.subtitle}</p>
+          <Badge>{h.eyebrow}</Badge>
+          <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            {h.headlineAr && <span className="block">{h.headlineAr}</span>}
+            <span className="block">
+              {h.headlineEn1} <span className="text-primary">{h.headlineEnHi}</span> {h.headlineEn2}
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">{h.sub}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg"><Link to="/contact">{t.hero.ctaPrimary}<ArrowRight className="ms-2 h-4 w-4" /></Link></Button>
-            <Button asChild size="lg" variant="outline"><Link to="/products">{t.hero.ctaSecondary}</Link></Button>
+            <Button asChild size="lg"><Link to="/contact">{h.cta1}<ArrowRight className="ms-2 h-4 w-4" /></Link></Button>
+            <Button asChild size="lg" variant="outline"><Link to="/ai-products">{h.cta2}</Link></Button>
           </div>
+          {h.trust?.length ? (
+            <div className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-4">
+              {h.trust.map((s) => (
+                <div key={s.k} className="text-center">
+                  <p className="text-2xl font-bold text-primary">{s.v}</p>
+                  <p className="text-xs text-muted-foreground">{s.k}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className="mt-14 flex gap-3 overflow-x-auto pb-3">
           {items.map((item, idx) => (
