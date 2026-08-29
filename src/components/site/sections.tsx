@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Bot, CheckCircle2, ChevronLeft, ChevronRight, Clock3, Globe2, Headphones, LineChart, MessageCircle, Play, Pause, Plus, Rocket, Search, Sparkles, Star, Target, TrendingUp, Users, X, Zap } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Bot, BriefcaseBusiness, Building2, CheckCircle2, ChevronLeft, ChevronRight, Clock3, Globe2, HardHat, Headphones, HeartPulse, LineChart, Megaphone, MessageCircle, Pause, PenTool, PhoneCall, Play, Plus, Rocket, Scale, Search, ShoppingCart, Sparkles, Star, Target, TrendingUp, UserPlus, Users, UtensilsCrossed, X, Zap } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
