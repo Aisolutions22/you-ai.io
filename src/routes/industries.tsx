@@ -26,6 +26,7 @@ function IndustriesPage() {
     <SiteLayout>
       <Section>
         <SectionHeading
+          as="h1"
           eyebrow={t.industries.eyebrow}
           title={<>{t.industries.page.title1} <span className="text-gradient italic">{t.industries.page.titleHi}</span>{t.industries.page.title2}</>}
           description="نفهم تحديات كل قطاع ونبني حلول ذكاء اصطناعي وأتمتة تعزز الكفاءة، تخفض التكاليف، وتحقق نتائج ملموسة."

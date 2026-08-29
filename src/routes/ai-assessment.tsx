@@ -46,6 +46,7 @@ function AssessmentPage() {
     <SiteLayout>
       <Section>
         <SectionHeading
+          as="h1"
           eyebrow={t.assessment.eyebrow}
           title={<>{t.assessment.title1} <span className="text-gradient italic">{t.assessment.titleHi}</span> {t.assessment.title2}</>}
           description={t.assessment.pageSub}

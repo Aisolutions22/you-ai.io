@@ -27,6 +27,7 @@ function AboutPage() {
     <SiteLayout>
       <Section>
         <SectionHeading
+          as="h1"
           eyebrow={t.about.eyebrow}
           title={<>{t.about.title1} <span className="text-gradient italic">{t.about.titleHi}</span>{t.about.title2}</>}
           description={t.about.sub}

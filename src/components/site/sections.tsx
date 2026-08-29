@@ -439,6 +439,7 @@ export function JourneyTeaser() {
   return (
     <Section id="journey" className={TIGHT}>
       <SectionHeading
+        as="h1"
         eyebrow={t.journey.eyebrow}
         title={<>{t.journey.title1} <span className="text-gradient italic">{t.journey.titleHi}</span> {t.journey.title2}</>}
       />
@@ -513,6 +514,7 @@ export function Industries() {
   return (
     <Section id="industries" className={TIGHT}>
       <SectionHeading
+        as="h1"
         eyebrow={t.industries.eyebrow}
         title={<>{t.industries.title1} <span className="text-gradient italic">{t.industries.titleHi}</span> {t.industries.title2}</>}
         description="نفهم تحديات كل قطاع ونبني حلول ذكاء اصطناعي وأتمتة تعزز الكفاءة، تخفض التكاليف، وتحقق نتائج ملموسة."
@@ -876,6 +878,7 @@ export function Scenarios() {
   return (
     <Section id="scenarios">
       <SectionHeading
+        as="h1"
         eyebrow={t.scenarios.eyebrow}
         title={<>{t.scenarios.title1} <span className="text-gradient italic">{t.scenarios.titleHi}</span> {t.scenarios.title2}</>}
         description={t.scenarios.sub}

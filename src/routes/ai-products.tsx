@@ -25,6 +25,7 @@ function ProductsPage() {
     <SiteLayout>
       <Section>
         <SectionHeading
+          as="h1"
           eyebrow={t.products.eyebrow}
           title={<>{t.products.page.title1} <span className="text-gradient italic">{t.products.page.titleHi}</span>{t.products.page.title2}</>}
           description={t.products.sub}

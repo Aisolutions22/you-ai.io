@@ -27,6 +27,7 @@ function EnginesPage() {
     <SiteLayout>
       <Section>
         <SectionHeading
+          as="h1"
           eyebrow={t.engines.eyebrow}
           title={<>{t.engines.page.title1} <span className="text-gradient italic">{t.engines.page.titleHi}</span>{t.engines.page.title2}</>}
           description={t.engines.page.sub}
