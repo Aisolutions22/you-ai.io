@@ -17,8 +17,8 @@ import { type WAPayload } from "@/lib/whatsapp";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { useT } from "@/lib/i18n";
-import heroPortrait from "@/assets/hero-ai-portrait.webp";
-import heroPortraitSm from "@/assets/hero-ai-portrait-sm.webp";
+import heroPortrait from "@/assets/hero-ai-robot.webp";
+import heroPortraitSm from "@/assets/hero-ai-robot-sm.webp";
 import saudiMarketVisual from "@/assets/saudi-market-vision-2030.jpg";
 
 export const JOURNEY_ICONS = [FileSearch, BarChart3, Layers, Workflow, Plug, Maximize, Gauge];
@@ -229,6 +229,9 @@ export function Hero() {
                 <line x1="200" y1="240" x2="200" y2="460" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.55" />
               </svg>
 
+              {/* Soft teal glow behind the image */}
+              <div aria-hidden="true" className="absolute -inset-8 rounded-full bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--primary)_30%,transparent),transparent)] blur-2xl" />
+
               <motion.img
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -238,7 +241,11 @@ export function Hero() {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                className="relative z-10 w-full rounded-3xl object-cover"
+                className="relative z-10 w-full object-cover"
+                style={{
+                  maskImage: "radial-gradient(ellipse 78% 82% at 50% 46%, black 55%, transparent 82%)",
+                  WebkitMaskImage: "radial-gradient(ellipse 78% 82% at 50% 46%, black 55%, transparent 82%)",
+                }}
               />
 
               {/* Floating capability chips */}
