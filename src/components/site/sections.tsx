@@ -439,7 +439,6 @@ export function JourneyTeaser() {
   return (
     <Section id="journey" className={TIGHT}>
       <SectionHeading
-        as="h1"
         eyebrow={t.journey.eyebrow}
         title={<>{t.journey.title1} <span className="text-gradient italic">{t.journey.titleHi}</span> {t.journey.title2}</>}
       />
