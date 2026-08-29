@@ -34,7 +34,7 @@ function AboutPage() {
               eyebrow={t.about.eyebrow}
               title={<>{t.about.title1} <span className="text-gradient italic">{t.about.titleHi}</span>{t.about.title2}</>}
               description={t.about.sub}
-              align="start"
+              align="left"
             />
             <div className="mt-7 flex flex-wrap gap-3">
               <LeadDialog variant="strategy">
