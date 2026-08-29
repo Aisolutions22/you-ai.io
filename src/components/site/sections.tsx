@@ -80,6 +80,56 @@ export function Industries() { return <IndustryCarousel />; }
 
 export function Insights() { return null; }
 
+export function Scenarios() {
+  const { t } = useI18n();
+  const s = t.scenarios;
+  return (
+    <section className="py-16 lg:py-24">
+      <div className="container mx-auto px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <Badge>{s.eyebrow}</Badge>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {s.title1} <span className="text-primary">{s.titleHi}</span> {s.title2}
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground">{s.sub}</p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {s.items.map((item, i) => (
+            <motion.div key={item.k} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.05 }}>
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <h2 className="text-xl font-bold">{item.k}</h2>
+                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-xl border bg-muted/40 p-4">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{s.labels.before}</p>
+                      <p className="mt-2 text-sm text-muted-foreground">{item.before}</p>
+                    </div>
+                    <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-primary">{s.labels.after}</p>
+                      <p className="mt-2 text-sm">{item.after}</p>
+                    </div>
+                  </div>
+                  <ul className="mt-4 space-y-2">
+                    {item.deltas.map((d) => (
+                      <li key={d} className="flex items-start gap-2 text-sm">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <span>{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Button asChild size="lg"><Link to="/contact">{t.hero.ctaPrimary}<ArrowRight className="ms-2 h-4 w-4" /></Link></Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function FinalCTA() { return null; }
 export function Journey() { return null; }
 export function Capabilities() { return null; }
