@@ -72,7 +72,7 @@
   --popover-foreground: #14181C;
   --panel: #14181C;
   --panel-foreground: #FFFFFF;
-  --primary: #0E8F72;
+  --primary: #1B7F82;
   --primary-foreground: #FFFFFF;
   --secondary: #F3F2EE;
   --secondary-foreground: #14181C;
@@ -81,11 +81,11 @@
   --accent-foreground: #14181C;
   --destructive: #C0392B;
   --destructive-foreground: #FFFFFF;
-  --ring: #0E8F72;
+  --ring: #1B7F82;
   --gold: #B8862E;
   --gold-foreground: #14181C;
 
-  --chart-1: #0E8F72;
+  --chart-1: #1B7F82;
   --chart-2: #2FD9AE;
   --chart-3: #14181C;
   --chart-4: #B8862E;
@@ -93,12 +93,12 @@
 
   --sidebar: #FFFFFF;
   --sidebar-foreground: #14181C;
-  --sidebar-primary: #0E8F72;
+  --sidebar-primary: #1B7F82;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #F3F2EE;
   --sidebar-accent-foreground: #14181C;
   --sidebar-border: #E5E4E0;
-  --sidebar-ring: #0E8F72;
+  --sidebar-ring: #1B7F82;
 
   --shadow-glow: 0 1px 2px rgba(20, 24, 28, 0.04), 0 4px 12px rgba(20, 24, 28, 0.06);
   --shadow-card: 0 1px 2px rgba(20, 24, 28, 0.04), 0 8px 24px rgba(20, 24, 28, 0.06);
@@ -117,7 +117,7 @@
   --popover-foreground: #F5F4F1;
   --panel: #171D1B;
   --panel-foreground: #F5F4F1;
-  --primary: #2FD9AE;
+  --primary: #4FC4C2;
   --primary-foreground: #10151A;
   --secondary: #1B2126;
   --secondary-foreground: #F5F4F1;
@@ -126,24 +126,24 @@
   --accent-foreground: #F5F4F1;
   --destructive: #E74C3C;
   --destructive-foreground: #F5F4F1;
-  --ring: #2FD9AE;
+  --ring: #4FC4C2;
   --gold: #D4AF6A;
   --gold-foreground: #10151A;
 
-  --chart-1: #2FD9AE;
-  --chart-2: #0E8F72;
+  --chart-1: #4FC4C2;
+  --chart-2: #4FC4C2;
   --chart-3: #F5F4F1;
   --chart-4: #D4AF6A;
   --chart-5: #A3A29D;
 
   --sidebar: #171D1B;
   --sidebar-foreground: #F5F4F1;
-  --sidebar-primary: #2FD9AE;
+  --sidebar-primary: #4FC4C2;
   --sidebar-primary-foreground: #10151A;
   --sidebar-accent: #1B2126;
   --sidebar-accent-foreground: #F5F4F1;
   --sidebar-border: #2A2F35;
-  --sidebar-ring: #2FD9AE;
+  --sidebar-ring: #4FC4C2;
 
   --shadow-glow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
