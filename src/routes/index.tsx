@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import {
-  Hero, JourneyTeaser, Capabilities, Industries, Assessment,
+  Hero, JourneyTeaser, Capabilities, Assessment,
   ROITeaser, SaudiMarket, Insights, FinalCTA,
 } from "@/components/site/sections";
+import { IndustryCarousel } from "@/components/site/IndustryCarousel";
 import heroPortrait from "@/assets/hero-ai-robot.webp";
 import heroPortraitSm from "@/assets/hero-ai-robot-sm.webp";
 
@@ -31,7 +32,7 @@ function HomePage() {
       <Hero />
       <Band tone="alt"><JourneyTeaser /></Band>
       <Band><Capabilities /></Band>
-      <Band tone="alt"><Industries /></Band>
+      <Band tone="alt"><IndustryCarousel /></Band>
       <Band><Assessment /></Band>
       <Band tone="alt"><ROITeaser /></Band>
       <Band><SaudiMarket /></Band>
