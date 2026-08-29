@@ -10,9 +10,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2">
-              <img src={logo} alt="You AI" className="h-9 w-9 object-contain" />
-              <span className="font-display text-2xl">You<span className="text-gradient">AI</span></span>
+            <Link to="/" className="flex items-center gap-2.5">
+              <img src={logo} alt="You AI" className="h-10 w-10 object-contain" />
+              <span className="font-display text-2xl font-bold tracking-tight">You<span className="text-gradient">AI</span></span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-muted-foreground">{t.footer.tagline}</p>
             <div className="mt-6 flex gap-2">

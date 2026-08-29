@@ -36,9 +36,11 @@ export function Navbar() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-2" : "py-4"}`}>
       <div className="mx-auto max-w-7xl px-4">
         <nav className={`flex items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all ${scrolled ? "glass-strong shadow-card" : "glass"}`}>
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src={logo} alt="You AI" className="h-9 w-9 object-contain" />
-            <span className="font-display text-2xl leading-none">You<span className="text-gradient">AI</span></span>
+          <Link to="/" className="flex items-center gap-2.5 shrink-0">
+            <img src={logo} alt="You AI" className="h-10 w-10 object-contain drop-shadow-sm" />
+            <span className="font-display text-2xl font-bold leading-none tracking-tight">
+              You<span className="text-gradient">AI</span>
+            </span>
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex lg:gap-2 xl:gap-3">
