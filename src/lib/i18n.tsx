@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { translations } from "./translations";
+import { industryCatalog } from "./industry-catalog";
 import type { Dictionary, Lang } from "./i18n-types";
 
 const STORAGE_KEY = "youai.lang";
@@ -49,13 +50,24 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     setLang(lang === "en" ? "ar" : "en");
   }, [lang, setLang]);
 
-  const value = useMemo<I18nValue>(() => ({
-    lang,
-    t: translations[lang],
-    setLang,
-    toggle,
-    dir: lang === "ar" ? "rtl" : "ltr",
-  }), [lang, setLang, toggle]);
+  const value = useMemo<I18nValue>(() => {
+    const base = translations[lang];
+    const t: Dictionary = {
+      ...base,
+      industries: {
+        ...base.industries,
+        items: industryCatalog[lang],
+      },
+    };
+
+    return {
+      lang,
+      t,
+      setLang,
+      toggle,
+      dir: lang === "ar" ? "rtl" : "ltr",
+    };
+  }, [lang, setLang, toggle]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
