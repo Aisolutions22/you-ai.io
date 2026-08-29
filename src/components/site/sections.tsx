@@ -136,4 +136,102 @@ export function Journey() { return null; }
 export function Capabilities() { return null; }
 export function Assessment() { return null; }
 export function ROI() { return null; }
+
+export function ROICalculator() {
+  const { t } = useI18n();
+  const r = t.roi;
+  const [employees, setEmployees] = useState(25);
+  const [salary, setSalary] = useState(8000);
+  const [hours, setHours] = useState(6);
+  const [revenue, setRevenue] = useState(500000);
+
+  const monthlyHoursSaved = employees * hours * 4.33;
+  const hourlyCost = salary / 160;
+  const monthlyCostSaved = Math.round(monthlyHoursSaved * hourlyCost);
+  const productivity = Math.min(60, Math.round((hours / 40) * 100));
+  const revenueUplift = Math.round(revenue * 0.08);
+
+  const numberFmt = (n: number) => n.toLocaleString("en-US");
+
+  const inputCls = "w-full rounded-xl border bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary";
+
+  const submit = () => {
+    openWhatsApp({
+      type: "roi",
+      fields: [
+        { label: r.labels.employees, value: String(employees) },
+        { label: r.labels.salary, value: numberFmt(salary) },
+        { label: r.labels.hours, value: `${hours} ${r.units.hrs}` },
+        { label: r.labels.revenue, value: numberFmt(revenue) },
+        { label: r.labels.hoursSaved, value: `${numberFmt(Math.round(monthlyHoursSaved))} ${r.units.hrs}` },
+        { label: r.labels.costSaved, value: numberFmt(monthlyCostSaved) },
+        { label: r.labels.productivity, value: `${productivity}%` },
+        { label: r.labels.revenueUplift, value: numberFmt(revenueUplift) },
+      ],
+    });
+  };
+
+  return (
+    <section className="py-16 lg:py-24">
+      <div className="container mx-auto px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <Badge>{r.eyebrow}</Badge>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {r.title1} <span className="text-primary">{r.titleHi}</span> {r.title2}
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground">{r.sub}</p>
+        </div>
+
+        <div className="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-2">
+          <Card>
+            <CardContent className="space-y-5 p-6">
+              <div>
+                <label className="mb-1.5 block text-sm font-medium">{r.labels.employees}</label>
+                <input type="number" min={1} value={employees} onChange={(e) => setEmployees(Math.max(1, Number(e.target.value) || 1))} className={inputCls} />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-medium">{r.labels.salary}</label>
+                <input type="number" min={0} value={salary} onChange={(e) => setSalary(Math.max(0, Number(e.target.value) || 0))} className={inputCls} />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-medium">{r.labels.hours}</label>
+                <input type="number" min={0} max={40} value={hours} onChange={(e) => setHours(Math.min(40, Math.max(0, Number(e.target.value) || 0)))} className={inputCls} />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-medium">{r.labels.revenue}</label>
+                <input type="number" min={0} value={revenue} onChange={(e) => setRevenue(Math.max(0, Number(e.target.value) || 0))} className={inputCls} />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-primary/30">
+            <CardContent className="flex h-full flex-col gap-4 p-6">
+              <div className="rounded-xl bg-primary/5 p-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{r.labels.hoursSaved}</p>
+                <p className="mt-1 text-2xl font-bold text-primary">{numberFmt(Math.round(monthlyHoursSaved))} {r.units.hrs}</p>
+              </div>
+              <div className="rounded-xl bg-primary/5 p-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{r.labels.costSaved}</p>
+                <p className="mt-1 text-2xl font-bold text-primary">{numberFmt(monthlyCostSaved)}</p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-xl border p-4">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{r.labels.productivity}</p>
+                  <p className="mt-1 text-xl font-bold">{productivity}%</p>
+                </div>
+                <div className="rounded-xl border p-4">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{r.labels.revenueUplift}</p>
+                  <p className="mt-1 text-xl font-bold">{numberFmt(revenueUplift)}</p>
+                </div>
+              </div>
+              <Button size="lg" className="mt-auto w-full" onClick={submit}>
+                {t.hero.ctaPrimary}<ArrowRight className="ms-2 h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
 export function SaudiMarket() { return null; }
