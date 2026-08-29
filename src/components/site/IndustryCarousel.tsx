@@ -22,15 +22,11 @@ const IMAGE_PATHS: Record<string, string> = {
 };
 
 function slugify(value: string) {
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, "-")
-    .replace(/^-+|-+$/g, "");
+  return value.trim().toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-+|-+$/g, "");
 }
 
 export function IndustryCarousel() {
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const [api, setApi] = useState<CarouselApi>();
   const [manualPaused, setManualPaused] = useState(false);
   const [interactionPaused, setInteractionPaused] = useState(false);
@@ -78,11 +74,7 @@ export function IndustryCarousel() {
         onTouchStart={pauseForInteraction}
         onTouchEnd={resumeAfterInteraction}
       >
-        <Carousel
-          opts={{ direction: "rtl", loop: true, align: "start" }}
-          setApi={setApi}
-          className="w-full"
-        >
+        <Carousel opts={{ direction: "rtl", loop: true, align: "start" }} setApi={setApi} className="w-full">
           <CarouselContent className="-ml-4">
             {items.map((item, index) => {
               const image = item.image || IMAGE_PATHS[item.k];
@@ -91,13 +83,7 @@ export function IndustryCarousel() {
 
               return (
                 <CarouselItem key={item.k} className="basis-[82%] pl-4 sm:basis-[48%] lg:basis-[30%] xl:basis-[22%]">
-                  <motion.div
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.45, delay: index * 0.05 }}
-                    className="h-full"
-                  >
+                  <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.45, delay: index * 0.05 }} className="h-full">
                     <Link
                       to="/industries"
                       hash={hrefHash}
@@ -105,27 +91,12 @@ export function IndustryCarousel() {
                       aria-label={`${item.k} — ${t.common.explore}`}
                     >
                       <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-primary/15 via-secondary to-background">
-                        {image ? (
-                          <img
-                            src={image}
-                            alt=""
-                            loading="lazy"
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                            onError={(event) => {
-                              event.currentTarget.style.display = "none";
-                            }}
-                          />
-                        ) : null}
+                        {image ? <img src={image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" onError={(event) => { event.currentTarget.style.display = "none"; }} /> : null}
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
                         <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-                          <div className="mb-3 grid h-10 w-10 place-items-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm">
-                            <Icon className="h-5 w-5" />
-                          </div>
+                          <div className="mb-3 grid h-10 w-10 place-items-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm"><Icon className="h-5 w-5" /></div>
                           <h3 className="font-display text-xl leading-tight">{item.k}</h3>
-                          <div className="mt-2 flex items-center gap-1.5 text-xs text-white/80">
-                            {lang === "ar" ? "استكشف الحلول" : "Explore solutions"}
-                            <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
-                          </div>
+                          <div className="mt-2 flex items-center gap-1.5 text-xs text-white/80">{t.common.explore}<ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" /></div>
                         </div>
                       </div>
                     </Link>
