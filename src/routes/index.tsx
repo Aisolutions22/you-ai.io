@@ -41,7 +41,6 @@ function HomePage() {
   );
 }
 
-/* Subtle rhythm: alternating background tone between sections */
 function Band({ children, tone }: { children: React.ReactNode; tone?: "alt" }) {
   return (
     <div className={tone === "alt" ? "bg-secondary/40" : "bg-background"}>
