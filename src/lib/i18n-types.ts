@@ -45,7 +45,10 @@ export interface Dictionary {
     eyebrow: string; title1: string; titleHi: string; title2: string; sub: string;
     pillars: { challenges: string; solutions: string; impact: string; expectedRoi: string };
     page: { title1: string; titleHi: string; title2: string; sub: string };
-    items: { k: string; short: string; challenges: string[]; solutions: string[]; impact: string[]; roi: string }[];
+    items: {
+      k: string; short: string; challenges: string[]; solutions: string[]; impact: string[]; roi: string;
+      image?: string; featured?: boolean; videoUrl?: string;
+    }[];
   };
   assessment: {
     eyebrow: string; title1: string; titleHi: string; title2: string; sub: string; pageSub: string;
