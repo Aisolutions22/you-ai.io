@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TransformationStoriesRouteImport } from './routes/transformation-stories'
 import { Route as TransformationJourneyRouteImport } from './routes/transformation-journey'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RoiCalculatorRouteImport } from './routes/roi-calculator'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as IndustriesRouteImport } from './routes/industries'
@@ -34,6 +35,11 @@ const TransformationStoriesRoute = TransformationStoriesRouteImport.update({
 const TransformationJourneyRoute = TransformationJourneyRouteImport.update({
   id: '/transformation-journey',
   path: '/transformation-journey',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RoiCalculatorRoute = RoiCalculatorRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
   '/roi-calculator': typeof RoiCalculatorRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
   '/solutions/automation': typeof SolutionsAutomationRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
   '/roi-calculator': typeof RoiCalculatorRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
   '/solutions/automation': typeof SolutionsAutomationRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRoute
   '/insights': typeof InsightsRoute
   '/roi-calculator': typeof RoiCalculatorRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/transformation-journey': typeof TransformationJourneyRoute
   '/transformation-stories': typeof TransformationStoriesRoute
   '/solutions/automation': typeof SolutionsAutomationRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/roi-calculator'
+    | '/sitemap.xml'
     | '/transformation-journey'
     | '/transformation-stories'
     | '/solutions/automation'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/roi-calculator'
+    | '/sitemap.xml'
     | '/transformation-journey'
     | '/transformation-stories'
     | '/solutions/automation'
@@ -211,6 +222,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/insights'
     | '/roi-calculator'
+    | '/sitemap.xml'
     | '/transformation-journey'
     | '/transformation-stories'
     | '/solutions/automation'
@@ -230,6 +242,7 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRoute
   InsightsRoute: typeof InsightsRoute
   RoiCalculatorRoute: typeof RoiCalculatorRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TransformationJourneyRoute: typeof TransformationJourneyRoute
   TransformationStoriesRoute: typeof TransformationStoriesRoute
   SolutionsAutomationRoute: typeof SolutionsAutomationRoute
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/transformation-journey'
       fullPath: '/transformation-journey'
       preLoaderRoute: typeof TransformationJourneyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roi-calculator': {
@@ -366,6 +386,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRoute,
   InsightsRoute: InsightsRoute,
   RoiCalculatorRoute: RoiCalculatorRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TransformationJourneyRoute: TransformationJourneyRoute,
   TransformationStoriesRoute: TransformationStoriesRoute,
   SolutionsAutomationRoute: SolutionsAutomationRoute,
