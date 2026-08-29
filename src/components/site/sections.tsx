@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { openWhatsApp } from "@/lib/whatsapp";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Bot, BriefcaseBusiness, Building2, CheckCircle2, ChevronLeft, ChevronRight, Clock3, Globe2, HardHat, Headphones, HeartPulse, LineChart, Megaphone, MessageCircle, Pause, PenTool, PhoneCall, Play, Plus, Rocket, Scale, Search, ShoppingCart, Sparkles, Star, Target, TrendingUp, UserPlus, Users, UtensilsCrossed, X, Zap } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
