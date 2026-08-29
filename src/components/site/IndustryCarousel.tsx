@@ -87,7 +87,7 @@ export function IndustryCarousel() {
             {items.map((item, index) => {
               const image = item.image || IMAGE_PATHS[item.k];
               const Icon = ICONS[index % ICONS.length];
-              const hrefHash = `#${slugify(item.k)}`;
+              const hrefHash = slugify(item.k);
 
               return (
                 <CarouselItem key={item.k} className="basis-[82%] pl-4 sm:basis-[48%] lg:basis-[30%] xl:basis-[22%]">
