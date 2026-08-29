@@ -18,9 +18,6 @@ export function Navbar() {
   const NAV: { to: any; label: string; exact?: boolean }[] = [
     { to: "/", label: t.nav.home, exact: true },
     { to: "/industries", label: t.nav.industries },
-    { to: "/ai-products", label: t.nav.products },
-    { to: "/ai-assessment", label: t.nav.assessment },
-    { to: "/insights", label: t.nav.insights },
     { to: "/about", label: t.nav.about },
     { to: "/contact", label: t.nav.contact },
   ];
