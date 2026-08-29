@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { translations } from "./translations";
+import { industryCatalog } from "./industry-catalog";
 import type { Dictionary, Lang } from "./i18n-types";
 
 const STORAGE_KEY = "youai.lang";
@@ -14,6 +15,17 @@ interface I18nValue {
 }
 
 const I18nContext = createContext<I18nValue | null>(null);
+
+function buildDictionary(lang: Lang): Dictionary {
+  const dictionary = translations[lang];
+  return {
+    ...dictionary,
+    industries: {
+      ...dictionary.industries,
+      items: industryCatalog[lang],
+    },
+  };
+}
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
@@ -47,7 +59,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<I18nValue>(() => ({
     lang,
-    t: translations[lang],
+    t: buildDictionary(lang),
     setLang,
     toggle,
     dir: lang === "ar" ? "rtl" : "ltr",
