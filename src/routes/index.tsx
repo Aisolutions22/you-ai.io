@@ -4,8 +4,8 @@ import {
   Hero, JourneyTeaser, Capabilities, Industries, Assessment,
   ROITeaser, SaudiMarket, Insights, FinalCTA,
 } from "@/components/site/sections";
-import heroPortrait from "@/assets/hero-ai-portrait.webp";
-import heroPortraitSm from "@/assets/hero-ai-portrait-sm.webp";
+import heroPortrait from "@/assets/hero-ai-robot.webp";
+import heroPortraitSm from "@/assets/hero-ai-robot-sm.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
