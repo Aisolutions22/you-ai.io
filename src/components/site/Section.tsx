@@ -15,16 +15,19 @@ export function SectionHeading({
   title,
   description,
   align = "left",
+  as = "h2",
 }: {
   eyebrow?: string;
   title: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
+  as?: "h1" | "h2";
 }) {
+  const Heading = as === "h1" ? motion.h1 : motion.h2;
   return (
     <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
       {eyebrow && <SectionEyebrow>{eyebrow}</SectionEyebrow>}
-      <motion.h2
+      <Heading
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -32,7 +35,7 @@ export function SectionHeading({
         className="font-display mt-4 text-4xl leading-[1.05] sm:text-5xl lg:text-6xl"
       >
         {title}
-      </motion.h2>
+      </Heading>
       {description && (
         <p className="mt-5 text-base text-muted-foreground sm:text-lg">{description}</p>
       )}
