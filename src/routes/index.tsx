@@ -30,9 +30,9 @@ function HomePage() {
   return (
     <SiteLayout>
       <Hero />
-      <Band tone="alt"><JourneyTeaser /></Band>
-      <Band><Capabilities /></Band>
       <Band tone="alt"><IndustryCarousel /></Band>
+      <Band><JourneyTeaser /></Band>
+      <Band tone="alt"><Capabilities /></Band>
       <Band><Assessment /></Band>
       <Band tone="alt"><ROITeaser /></Band>
       <Band><SaudiMarket /></Band>
