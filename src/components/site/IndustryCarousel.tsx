@@ -50,8 +50,8 @@ export function IndustryCarousel() {
         onMouseLeave={() => setHovered(false)}
       >
         {/* Edge fades so cards don't hard-cut at the container edges */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 start-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
-        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 end-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 start-0 z-10 hidden w-16 bg-gradient-to-r from-background to-transparent sm:block" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 end-0 z-10 hidden w-16 bg-gradient-to-l from-background to-transparent sm:block" />
 
         <div className="overflow-hidden" dir="ltr">
           <div
