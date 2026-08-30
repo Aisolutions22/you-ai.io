@@ -170,7 +170,7 @@ const en: Dictionary = {
       { k: "Call Center", short: "AR/EN voice agents, live-agent copilots and auto-QA across 100% of calls.", challenges: ["High AHT", "Agent turnover", "Quality assurance"], solutions: ["AI Call Center Agent", "Live agent assist", "Auto-QA"], impact: ["−42% AHT", "92% containment"], roi: "5.8x in 6 months" },
       { k: "Recruitment", short: "AI screening, conversational sourcing and end-to-end recruiter copilots.", challenges: ["CV overload", "Slow time-to-hire", "Candidate experience"], solutions: ["AI Recruitment Suite", "Smart screening", "Conversational sourcing"], impact: ["−63% time-to-hire", "+3x recruiter capacity"], roi: "4.7x in 6 months" },
       { k: "Content Creators", short: "Brand-locked AI content production across video, social, web and email.", challenges: ["Production bottlenecks", "Brand consistency", "Channel velocity"], solutions: ["Content Engine", "Multi-channel publishing", "Brand-locked AI"], impact: ["10x output", "−60% cost-per-asset"], roi: "8x in 4 months", featured: true },
-      { k: "SMEs", short: "Lightweight AI ops bundles — sales, support, content and finance, in one.", challenges: ["Limited staff", "Fragmented tools", "Manual ops"], solutions: ["AI Ops Bundle", "Sales + support agents", "Lightweight ERP/CRM"], impact: ["+2x capacity", "−50% admin time"], roi: "4x in 6 months" },
+      { k: "SMEs", short: "Lightweight AI ops bundles — sales, support, content and finance, in one.", challenges: ["Limited staff", "Fragmented tools", "Manual ops"], solutions: ["AI Ops Bundle", "Sales + support agents", "Lightweight ERP/CRM"], impact: ["+2x capacity", "−50% admin time"], roi: "4x in 6 months", featured: true },
     ],
   },
   assessment: {
@@ -679,7 +679,7 @@ const ar: Dictionary = {
       { k: "مراكز الاتصال", short: "وكلاء صوتيون عربي/إنجليزي، مساعدون مباشرون، وضبط جودة آلي لـ100٪ من المكالمات.", challenges: ["زمن معالجة مرتفع", "دوران الوكلاء", "ضمان الجودة"], solutions: ["وكيل مركز اتصال", "مساعد للوكيل المباشر", "ضبط جودة آلي"], impact: ["−42٪ AHT", "92٪ احتواء"], roi: "5.8x خلال 6 أشهر" },
       { k: "التوظيف", short: "فرز ذكي، تواصل تحادثي مع المرشحين، ومساعدون شاملون للمسؤول عن التوظيف.", challenges: ["تكدّس السير الذاتية", "بطء التوظيف", "تجربة المرشح"], solutions: ["مجموعة توظيف بالذكاء الاصطناعي", "فرز ذكي", "تواصل تحادثي"], impact: ["−63٪ زمن التوظيف", "+3x طاقة المسؤول"], roi: "4.7x خلال 6 أشهر" },
       { k: "صنّاع المحتوى", short: "إنتاج محتوى مقيّد بالهوية بالذكاء الاصطناعي عبر الفيديو والسوشيال والويب والبريد.", challenges: ["اختناقات الإنتاج", "اتساق الهوية", "سرعة القنوات"], solutions: ["محرك المحتوى", "نشر متعدد القنوات", "ذكاء اصطناعي مقيّد بالهوية"], impact: ["10x إنتاج", "−60٪ تكلفة لكل أصل"], roi: "8x خلال 4 أشهر", featured: true },
-      { k: "المنشآت الصغيرة والمتوسطة", short: "حزم تشغيل خفيفة بالذكاء الاصطناعي — مبيعات ودعم ومحتوى ومالية في حزمة واحدة.", challenges: ["طاقم محدود", "أدوات متفرقة", "عمليات يدوية"], solutions: ["حزمة عمليات", "وكلاء مبيعات ودعم", "ERP/CRM خفيف"], impact: ["+2x طاقة استيعابية", "−50٪ زمن إداري"], roi: "4x خلال 6 أشهر" },
+      { k: "المنشآت الصغيرة والمتوسطة", short: "حزم تشغيل خفيفة بالذكاء الاصطناعي — مبيعات ودعم ومحتوى ومالية في حزمة واحدة.", challenges: ["طاقم محدود", "أدوات متفرقة", "عمليات يدوية"], solutions: ["حزمة عمليات", "وكلاء مبيعات ودعم", "ERP/CRM خفيف"], impact: ["+2x طاقة استيعابية", "−50٪ زمن إداري"], roi: "4x خلال 6 أشهر", featured: true },
     ],
   },
   assessment: {
