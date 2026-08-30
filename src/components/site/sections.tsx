@@ -142,19 +142,6 @@ export function Hero() {
   const t = useT();
   const ref = useRef<HTMLDivElement>(null);
 
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const scrollBy = (dir: 1 | -1) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * (el.clientWidth * 0.8), behavior: "smooth" });
-  };
-
-  const industries = t.industries.items;
-  const active = openIdx != null ? industries[openIdx] : null;
-  const ActiveIcon = openIdx != null ? industryIcon(openIdx) : null;
-
   return (
     <section ref={ref} className="relative isolate overflow-hidden">
       {/* Calm light background — very soft emerald tint in the top corner, no glows */}
@@ -301,126 +288,9 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }} className="relative mt-10 sm:mt-14">
-          <div className="mb-4 flex items-end justify-between gap-4">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">{t.hero.industryStripTitle}</div>
-              <div className="mt-1 max-w-xl text-sm text-foreground/80">{t.hero.industryStripSub}</div>
-            </div>
-            <div className="hidden gap-2 sm:flex">
-              <button type="button" aria-label="scroll previous" onClick={() => scrollBy(-1)} className="grid h-10 w-10 place-items-center rounded-full glass-strong hover:bg-white/10">
-                <ChevronLeft className="h-4 w-4 rtl:rotate-180" />
-              </button>
-              <button type="button" aria-label="scroll next" onClick={() => scrollBy(1)} className="grid h-10 w-10 place-items-center rounded-full glass-strong hover:bg-white/10">
-                <ChevronRight className="h-4 w-4 rtl:rotate-180" />
-              </button>
-            </div>
-          </div>
-
-          <div ref={scrollerRef} className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 -mx-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {industries.map((s, idx) => {
-              const SIcon = industryIcon(idx);
-              const isHover = hoverIdx === idx;
-              return (
-                <motion.button key={s.k} type="button"
-                  onMouseEnter={() => setHoverIdx(idx)}
-                  onMouseLeave={() => setHoverIdx((h) => (h === idx ? null : h))}
-                  onFocus={() => setHoverIdx(idx)}
-                  onBlur={() => setHoverIdx((h) => (h === idx ? null : h))}
-                  onClick={() => setOpenIdx(idx)}
-                  whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="group relative w-[220px] shrink-0 snap-start overflow-hidden rounded-2xl glass-strong p-5 text-start shadow-card focus:outline-none focus:ring-2 focus:ring-electric/60"
-                  aria-label={`${s.k} — ${t.hero.tapHint}`}>
-                  <div className="absolute -top-16 -end-12 h-32 w-32 rounded-full bg-magenta/25 blur-2xl opacity-60 transition-opacity group-hover:opacity-100" />
-                  <div className="relative">
-                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand/90 shadow-glow">
-                      <SIcon className="h-5 w-5 text-primary-foreground" />
-                    </div>
-                    <div className="mt-4 font-display text-lg leading-tight">{s.k}</div>
-                    <div className="relative mt-2 h-[64px] overflow-hidden">
-                      <AnimatePresence mode="wait" initial={false}>
-                        {isHover ? (
-                          <motion.div key="challenge" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="absolute inset-0">
-                            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-ember">
-                              <AlertTriangle className="h-3 w-3" /> {t.industries.pillars.challenges}
-                            </div>
-                            <ul className="mt-1 space-y-0.5 text-xs text-foreground/90">
-                              {s.challenges.slice(0, 2).map((c) => (<li key={c} className="truncate">· {c}</li>))}
-                            </ul>
-                          </motion.div>
-                        ) : (
-                          <motion.p key="short" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="absolute inset-0 text-xs leading-snug text-muted-foreground line-clamp-3">
-                            {s.short}
-                          </motion.p>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                    <div className="mt-3 flex items-center justify-between text-[11px]">
-                      <span className="text-electric/90">{t.hero.tapHint}</span>
-                      <ArrowRight className="h-3.5 w-3.5 text-electric rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                    </div>
-                  </div>
-                </motion.button>
-              );
-            })}
-          </div>
-        </motion.div>
       </div>
 
-      <Dialog open={openIdx != null} onOpenChange={(o) => !o && setOpenIdx(null)}>
-        <DialogContent className="max-w-3xl border-white/10 bg-background/95 p-0 backdrop-blur-xl">
-          {active && ActiveIcon && (
-            <div className="relative overflow-hidden rounded-lg">
-              <div className="pointer-events-none absolute -top-24 -end-20 h-60 w-60 rounded-full bg-magenta/30 blur-3xl" />
-              <div className="pointer-events-none absolute -bottom-24 -start-20 h-60 w-60 rounded-full bg-electric/25 blur-3xl" />
-              <div className="relative p-7 sm:p-9">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand shadow-glow">
-                    <ActiveIcon className="h-5 w-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <DialogTitle className="font-display text-2xl sm:text-3xl">{active.k}</DialogTitle>
-                    <DialogDescription className="mt-1 text-sm text-muted-foreground">{active.short}</DialogDescription>
-                  </div>
-                </div>
-                <div className="mt-7 grid gap-5 sm:grid-cols-3">
-                  <PanelBlock title={t.industries.pillars.challenges} items={active.challenges} tone="ember" />
-                  <PanelBlock title={t.industries.pillars.solutions} items={active.solutions} tone="electric" />
-                  <PanelBlock title={t.industries.pillars.impact} items={active.impact} tone="magenta" />
-                </div>
-                <div className="mt-7 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-brand/10 p-5">
-                  <div>
-                    <div className="text-xs uppercase tracking-widest text-muted-foreground">{t.industries.pillars.expectedRoi}</div>
-                    <div className="font-display text-2xl text-gradient sm:text-3xl">{active.roi}</div>
-                  </div>
-                  <LeadDialog variant="roadmap">
-                    <button type="button" className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-glow">
-                      {t.hero.panelCtaPrimary} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
-                    </button>
-                  </LeadDialog>
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </section>
-  );
-}
-function PanelBlock({ title, items, tone }: { title: string; items: string[]; tone: "ember" | "electric" | "magenta" }) {
-  const dotClass = tone === "ember" ? "bg-ember" : tone === "electric" ? "bg-electric" : "bg-magenta";
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-      <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{title}</div>
-      <ul className="mt-3 space-y-2">
-        {items.map((x) => (
-          <li key={x} className="flex items-start gap-2 text-sm">
-            <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${dotClass}`} />
-            <span>{x}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 /* ---------------- TIGHT SECTION WRAPPER ---------------- */
