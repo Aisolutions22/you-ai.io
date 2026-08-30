@@ -237,3 +237,10 @@
 @utility animate-orb {
   animation: none;
 }
+
+/* Continuous horizontal marquee — used by IndustryCarousel for a smooth,
+   non-stop sliding motion instead of discrete snap-jumps. */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

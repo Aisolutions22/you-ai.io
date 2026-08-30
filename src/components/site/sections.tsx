@@ -290,60 +290,7 @@ export function Hero() {
 
       </div>
 
-      <Dialog open={openIdx != null} onOpenChange={(o) => !o && setOpenIdx(null)}>
-        <DialogContent className="max-w-3xl border-white/10 bg-background/95 p-0 backdrop-blur-xl">
-          {active && ActiveIcon && (
-            <div className="relative overflow-hidden rounded-lg">
-              <div className="pointer-events-none absolute -top-24 -end-20 h-60 w-60 rounded-full bg-magenta/30 blur-3xl" />
-              <div className="pointer-events-none absolute -bottom-24 -start-20 h-60 w-60 rounded-full bg-electric/25 blur-3xl" />
-              <div className="relative p-7 sm:p-9">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand shadow-glow">
-                    <ActiveIcon className="h-5 w-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <DialogTitle className="font-display text-2xl sm:text-3xl">{active.k}</DialogTitle>
-                    <DialogDescription className="mt-1 text-sm text-muted-foreground">{active.short}</DialogDescription>
-                  </div>
-                </div>
-                <div className="mt-7 grid gap-5 sm:grid-cols-3">
-                  <PanelBlock title={t.industries.pillars.challenges} items={active.challenges} tone="ember" />
-                  <PanelBlock title={t.industries.pillars.solutions} items={active.solutions} tone="electric" />
-                  <PanelBlock title={t.industries.pillars.impact} items={active.impact} tone="magenta" />
-                </div>
-                <div className="mt-7 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-brand/10 p-5">
-                  <div>
-                    <div className="text-xs uppercase tracking-widest text-muted-foreground">{t.industries.pillars.expectedRoi}</div>
-                    <div className="font-display text-2xl text-gradient sm:text-3xl">{active.roi}</div>
-                  </div>
-                  <LeadDialog variant="roadmap">
-                    <button type="button" className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-glow">
-                      {t.hero.panelCtaPrimary} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
-                    </button>
-                  </LeadDialog>
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </section>
-  );
-}
-function PanelBlock({ title, items, tone }: { title: string; items: string[]; tone: "ember" | "electric" | "magenta" }) {
-  const dotClass = tone === "ember" ? "bg-ember" : tone === "electric" ? "bg-electric" : "bg-magenta";
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-      <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{title}</div>
-      <ul className="mt-3 space-y-2">
-        {items.map((x) => (
-          <li key={x} className="flex items-start gap-2 text-sm">
-            <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${dotClass}`} />
-            <span>{x}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 /* ---------------- TIGHT SECTION WRAPPER ---------------- */
