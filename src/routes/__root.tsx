@@ -10,21 +10,20 @@ import {
 } from "@tanstack/react-router";
 
 import { Toaster } from "@/components/ui/sonner";
-import { I18nProvider, PRE_HYDRATION_LANG_SCRIPT, useT } from "@/lib/i18n";
+import { I18nProvider, PRE_HYDRATION_LANG_SCRIPT } from "@/lib/i18n";
 import { ThemeProvider, PRE_HYDRATION_THEME_SCRIPT } from "@/lib/theme";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
-  const t = useT();
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
         <h1 className="font-display text-8xl text-gradient">404</h1>
-        <h2 className="mt-4 text-xl font-semibold">{t.common.notFound}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">{t.common.notFoundDesc}</p>
+        <h2 className="mt-4 text-xl font-semibold">Page not found · الصفحة غير موجودة</h2>
+        <p className="mt-2 text-sm text-muted-foreground">The page you requested could not be found.</p>
         <div className="mt-6">
           <Link to="/" className="inline-flex items-center justify-center rounded-full bg-brand px-6 py-2.5 text-sm font-medium text-primary-foreground shadow-glow">
-            {t.common.backHome}
+            Back home · العودة للرئيسية
           </Link>
         </div>
       </div>
@@ -33,19 +32,23 @@ function NotFoundComponent() {
 }
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
+  // Route error components are rendered outside RootComponent's I18nProvider.
+  // Keep this boundary dependency-free so it can always reveal the real error.
+  console.error("[You AI route error]", error);
   const router = useRouter();
-  const t = useT();
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="max-w-md text-center">
-        <h1 className="font-display text-3xl">{t.common.errorTitle}</h1>
-        <p className="mt-2 text-sm text-muted-foreground">{t.common.errorSub}</p>
+      <div className="max-w-xl text-center">
+        <h1 className="font-display text-3xl">Something went wrong · حدث خطأ</h1>
+        <p className="mt-2 text-sm text-muted-foreground">The page could not be rendered. Please retry.</p>
+        <pre className="mt-5 max-h-48 overflow-auto rounded-xl bg-muted p-4 text-left text-xs text-muted-foreground whitespace-pre-wrap">
+          {error instanceof Error ? `${error.name}: ${error.message}` : String(error)}
+        </pre>
         <button
           onClick={() => { router.invalidate(); reset(); }}
           className="mt-6 inline-flex items-center justify-center rounded-full bg-brand px-6 py-2.5 text-sm font-medium text-primary-foreground shadow-glow"
         >
-          {t.common.retry}
+          Retry · إعادة المحاولة
         </button>
       </div>
     </div>
@@ -87,8 +90,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
-  // SSR default = Arabic. The pre-hydration ScriptOnce flips html attrs from
-  // localStorage before paint, so EN users don't see a flash of RTL/AR.
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>

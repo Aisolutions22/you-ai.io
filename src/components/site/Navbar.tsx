@@ -12,8 +12,11 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [mobileSolOpen, setMobileSolOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const solRef = useRef<HTMLLIElement>(null);
+  const aboutRef = useRef<HTMLLIElement>(null);
 
   const NAV: { to: any; label: string; exact?: boolean }[] = [
     { to: "/", label: t.nav.home, exact: true },
@@ -35,144 +38,57 @@ export function Navbar() {
         <nav className={`flex items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all ${scrolled ? "glass-strong shadow-card" : "glass"}`}>
           <Link to="/" className="flex items-center gap-2.5 shrink-0">
             <img src={logo} alt="You AI" className="h-10 w-10 object-contain drop-shadow-sm" />
-            <span className="font-display text-2xl font-bold leading-none tracking-tight">
-              You<span className="text-gradient">AI</span>
-            </span>
+            <span className="font-display text-2xl font-bold leading-none tracking-tight">You<span className="text-gradient">AI</span></span>
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex lg:gap-2 xl:gap-3">
-            {NAV.map((item, idx) => (
-              <Fragment key={item.to}>
-                <li>
-                  <Link
-                    to={item.to}
-                    className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
-                    activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}
-                    activeOptions={{ exact: !!item.exact }}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-                {idx === 0 && (
-                  <li ref={solRef} className="relative" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
-                    <button
-                      type="button"
-                      aria-expanded={solOpen}
-                      onClick={() => setSolOpen((v) => !v)}
-                      className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
-                    >
-                      {t.nav.solutions}
-                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${solOpen ? "rotate-180" : ""}`} />
-                    </button>
-                    {solOpen && (
-                      <div className="absolute start-0 top-full z-50 pt-3">
-                        <div className="w-80 rounded-2xl border border-border bg-popover p-2 shadow-card">
-                          {t.solutionsMenu.items.map((s) => (
-                            <Link
-                              key={s.key}
-                              to={s.href as any}
-                              onClick={() => setSolOpen(false)}
-                              className="block rounded-xl px-3 py-2 transition-colors hover:bg-muted/60"
-                            >
-                              <span className="block text-sm font-medium text-foreground">{s.title}</span>
-                              <span className="block text-xs text-muted-foreground">{s.tagline}</span>
-                            </Link>
-                          ))}
-                          <div className="my-2 h-px bg-border" />
-                          <Link to="/ai-assessment" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60">
-                            <span className="block text-sm font-medium text-primary">{t.solutionsMenu.assessmentLabel}</span>
-                            <span className="block text-xs text-muted-foreground">{t.solutionsMenu.assessmentTagline}</span>
-                          </Link>
-                          <Link to="/roi-calculator" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60">
-                            <span className="block text-sm font-medium text-primary">{t.solutionsMenu.roiLabel}</span>
-                            <span className="block text-xs text-muted-foreground">{t.solutionsMenu.roiTagline}</span>
-                          </Link>
-                        </div>
-                      </div>
-                    )}
-                  </li>
-                )}
-              </Fragment>
-            ))}
+            <li><Link to="/" activeOptions={{ exact: true }} className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground" activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}>{t.nav.home}</Link></li>
+            <li ref={solRef} className="relative" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
+              <button type="button" aria-expanded={solOpen} onClick={() => setSolOpen((v) => !v)} className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">
+                {t.nav.solutions}<ChevronDown className={`h-3.5 w-3.5 transition-transform ${solOpen ? "rotate-180" : ""}`} />
+              </button>
+              {solOpen && <div className="absolute start-0 top-full z-50 pt-3"><div className="w-80 rounded-2xl border border-border bg-popover p-2 shadow-card">
+                {t.solutionsMenu.items.map((s) => <Link key={s.key} to={s.href as any} onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 transition-colors hover:bg-muted/60"><span className="block text-sm font-medium text-foreground">{s.title}</span><span className="block text-xs text-muted-foreground">{s.tagline}</span></Link>)}
+                <div className="my-2 h-px bg-border" />
+                <Link to="/ai-assessment" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60"><span className="block text-sm font-medium text-primary">{t.solutionsMenu.assessmentLabel}</span><span className="block text-xs text-muted-foreground">{t.solutionsMenu.assessmentTagline}</span></Link>
+                <Link to="/roi-calculator" onClick={() => setSolOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-muted/60"><span className="block text-sm font-medium text-primary">{t.solutionsMenu.roiLabel}</span><span className="block text-xs text-muted-foreground">{t.solutionsMenu.roiTagline}</span></Link>
+              </div></div>}
+            </li>
+            <li ref={aboutRef} className="relative" onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
+              <button type="button" aria-expanded={aboutOpen} onClick={() => setAboutOpen((v) => !v)} className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">
+                {t.nav.about}<ChevronDown className={`h-3.5 w-3.5 transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
+              </button>
+              {aboutOpen && <div className="absolute start-0 top-full z-50 pt-3"><div className="min-w-56 rounded-2xl border border-border bg-popover p-2 shadow-card">
+                <Link to="/about" onClick={() => setAboutOpen(false)} className="block rounded-xl px-3 py-2 text-sm font-medium transition-colors hover:bg-muted/60">{t.nav.about}</Link>
+                <Link to="/insights" onClick={() => setAboutOpen(false)} className="block rounded-xl px-3 py-2 text-sm font-medium transition-colors hover:bg-muted/60">{t.nav.insights}</Link>
+              </div></div>}
+            </li>
+            <li><Link to="/industries" className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground" activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}>{t.nav.industries}</Link></li>
+            <li><Link to="/contact" className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground" activeProps={{ className: "whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}>{t.nav.contact}</Link></li>
           </ul>
-
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <LanguageSwitcher />
-            <LeadDialog variant="roadmap">
-              <button
-                type="button"
-                className="hidden md:inline-flex items-center justify-center rounded-full bg-brand px-4 py-2 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-[1.02] whitespace-nowrap"
-              >
-                {t.nav.cta}
-              </button>
-            </LeadDialog>
-            <button onClick={() => setOpen((v) => !v)} aria-label={t.nav.menu} className="lg:hidden grid h-9 w-9 place-items-center rounded-full glass">
-              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </button>
-
+            <LeadDialog variant="roadmap"><button type="button" className="hidden md:inline-flex items-center justify-center rounded-full bg-brand px-4 py-2 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-[1.02] whitespace-nowrap">{t.nav.cta}</button></LeadDialog>
+            <button onClick={() => setOpen((v) => !v)} aria-label={t.nav.menu} className="lg:hidden grid h-9 w-9 place-items-center rounded-full glass">{open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}</button>
           </div>
         </nav>
 
-        {open && (
-          <div className="lg:hidden mt-2 glass-strong rounded-2xl p-3">
-
-            <ul className="grid gap-1">
-              {NAV.map((item, idx) => (
-                <Fragment key={item.to}>
-                  <li>
-                    <Link to={item.to} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">
-                      {item.label}
-                    </Link>
-                  </li>
-                  {idx === 0 && (
-                    <li>
-                      <button
-                        type="button"
-                        aria-expanded={mobileSolOpen}
-                        onClick={() => setMobileSolOpen((v) => !v)}
-                        className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm hover:bg-white/5"
-                      >
-                        {t.nav.solutions}
-                        <ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} />
-                      </button>
-                      {mobileSolOpen && (
-                        <ul className="mt-1 grid gap-1 border-s border-border ps-3">
-                          {t.solutionsMenu.items.map((s) => (
-                            <li key={s.key}>
-                              <Link to={s.href as any} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-white/5">
-                                <span className="block text-sm">{s.title}</span>
-                                <span className="block text-xs text-muted-foreground">{s.tagline}</span>
-                              </Link>
-                            </li>
-                          ))}
-                          <li>
-                            <Link to="/ai-assessment" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">
-                              {t.solutionsMenu.assessmentLabel}
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to="/roi-calculator" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">
-                              {t.solutionsMenu.roiLabel}
-                            </Link>
-                          </li>
-                        </ul>
-                      )}
-                    </li>
-                  )}
-                </Fragment>
-              ))}
-              <li>
-                <LeadDialog variant="roadmap">
-                  <button type="button" onClick={() => setOpen(false)} className="mt-1 block w-full rounded-xl bg-brand px-3 py-2 text-sm font-medium text-center text-primary-foreground">
-                    {t.nav.cta}
-                  </button>
-                </LeadDialog>
-              </li>
-            </ul>
-          </div>
-        )}
+        {open && <div className="lg:hidden mt-2 glass-strong rounded-2xl p-3"><ul className="grid gap-1">
+          <li><Link to="/" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">{t.nav.home}</Link></li>
+          <li><Link to="/industries" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">{t.nav.industries}</Link></li>
+          <li>
+            <button type="button" aria-expanded={mobileSolOpen} onClick={() => setMobileSolOpen((v) => !v)} className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm hover:bg-white/5">{t.nav.solutions}<ChevronDown className={`h-4 w-4 transition-transform ${mobileSolOpen ? "rotate-180" : ""}`} /></button>
+            {mobileSolOpen && <ul className="mt-1 grid gap-1 border-s border-border ps-3">{t.solutionsMenu.items.map((s) => <li key={s.key}><Link to={s.href as any} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 hover:bg-white/5"><span className="block text-sm">{s.title}</span><span className="block text-xs text-muted-foreground">{s.tagline}</span></Link></li>)}<li><Link to="/ai-assessment" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">{t.solutionsMenu.assessmentLabel}</Link></li><li><Link to="/roi-calculator" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm text-primary hover:bg-white/5">{t.solutionsMenu.roiLabel}</Link></li></ul>}
+          </li>
+          <li>
+            <button type="button" aria-expanded={mobileAboutOpen} onClick={() => setMobileAboutOpen((v) => !v)} className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm hover:bg-white/5">{t.nav.about}<ChevronDown className={`h-4 w-4 transition-transform ${mobileAboutOpen ? "rotate-180" : ""}`} /></button>
+            {mobileAboutOpen && <ul className="mt-1 grid gap-1 border-s border-border ps-3"><li><Link to="/about" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">{t.nav.about}</Link></li><li><Link to="/insights" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">{t.nav.insights}</Link></li></ul>}
+          </li>
+          <li><Link to="/contact" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-2 text-sm hover:bg-white/5">{t.nav.contact}</Link></li>
+          <li><LeadDialog variant="roadmap"><button type="button" onClick={() => setOpen(false)} className="mt-1 block w-full rounded-xl bg-brand px-3 py-2 text-sm font-medium text-center text-primary-foreground">{t.nav.cta}</button></LeadDialog></li>
+        </ul></div>}
       </div>
     </header>
   );

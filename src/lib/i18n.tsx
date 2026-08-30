@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { translations } from "./translations";
+import { industryCatalog } from "./industry-catalog";
 import type { Dictionary, Lang } from "./i18n-types";
 
 const STORAGE_KEY = "youai.lang";
@@ -15,11 +16,20 @@ interface I18nValue {
 
 const I18nContext = createContext<I18nValue | null>(null);
 
+function buildDictionary(lang: Lang): Dictionary {
+  const dictionary = translations[lang];
+  return {
+    ...dictionary,
+    industries: {
+      ...dictionary.industries,
+      items: industryCatalog[lang],
+    },
+  };
+}
+
 export function I18nProvider({ children }: { children: ReactNode }) {
-  // Always start with the SSR-rendered default so hydration matches.
   const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
 
-  // After mount, read persisted preference and switch if needed.
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY) as Lang | null;
@@ -29,10 +39,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     } catch {
       // ignore
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Reflect language onto the document for CSS (RTL, fonts) and screen readers.
   useEffect(() => {
     if (typeof document === "undefined") return;
     const html = document.documentElement;
@@ -51,7 +59,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<I18nValue>(() => ({
     lang,
-    t: translations[lang],
+    t: buildDictionary(lang),
     setLang,
     toggle,
     dir: lang === "ar" ? "rtl" : "ltr",
@@ -70,7 +78,6 @@ export function useT(): Dictionary {
   return useI18n().t;
 }
 
-/** Inline script that runs before hydration so RTL/lang are set with zero flash. */
 export const PRE_HYDRATION_LANG_SCRIPT = `
 try {
   var l = localStorage.getItem(${JSON.stringify(STORAGE_KEY)}) || ${JSON.stringify(DEFAULT_LANG)};
