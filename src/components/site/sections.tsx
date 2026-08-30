@@ -24,6 +24,8 @@ import saudiMarketVisual from "@/assets/saudi-market-vision-2030.jpg";
 export const JOURNEY_ICONS = [FileSearch, BarChart3, Layers, Workflow, Plug, Maximize, Gauge];
 const ENGINE_ICONS = [TrendingUp, Cog, Heart, FileText, Lightbulb];
 const INDUSTRY_ICONS = [Scale, Building2, Home, ShoppingBag, Stethoscope, PhoneCall, Users, PenTool, Store];
+const industryIcon = (i: number) => INDUSTRY_ICONS[i] ?? Sparkles;
+const journeyIcon = (i: number) => JOURNEY_ICONS[i] ?? Sparkles;
 
 /* ==================================================================
    HOME PAGE SECTIONS (used only by src/routes/index.tsx)
@@ -151,7 +153,7 @@ export function Hero() {
 
   const industries = t.industries.items;
   const active = openIdx != null ? industries[openIdx] : null;
-  const ActiveIcon = openIdx != null ? INDUSTRY_ICONS[openIdx] : null;
+  const ActiveIcon = openIdx != null ? industryIcon(openIdx) : null;
 
   return (
     <section ref={ref} className="relative isolate overflow-hidden">
@@ -317,7 +319,7 @@ export function Hero() {
 
           <div ref={scrollerRef} className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 -mx-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {industries.map((s, idx) => {
-              const SIcon = INDUSTRY_ICONS[idx];
+              const SIcon = industryIcon(idx);
               const isHover = hoverIdx === idx;
               return (
                 <motion.button key={s.k} type="button"
@@ -451,7 +453,7 @@ export function JourneyTeaser() {
       />
       <div className="mt-10 grid gap-4 sm:grid-cols-3">
         {steps.map((s, i) => {
-          const Icon = JOURNEY_ICONS[i];
+          const Icon = journeyIcon(i);
           return (
             <motion.div key={s.k} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
@@ -717,7 +719,7 @@ export function Journey() {
   const t = useT();
   const [active, setActive] = useState(0);
   const A = t.journey.steps[active];
-  const Icon = JOURNEY_ICONS[active];
+  const Icon = journeyIcon(active);
   return (
     <Section id="journey">
       <SectionHeading
@@ -730,7 +732,7 @@ export function Journey() {
         <ol className="relative">
           <div className="absolute start-5 top-3 bottom-3 w-px bg-white/10" />
           {t.journey.steps.map((s, i) => {
-            const SIcon = JOURNEY_ICONS[i];
+            const SIcon = journeyIcon(i);
             const isActive = i === active;
             return (
               <li key={s.k}>
