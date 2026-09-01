@@ -277,13 +277,17 @@ export function Hero() {
           ))}
         </motion.div>
 
-        {/* Trusted-by strip (placeholder logos — to be replaced with real clients) */}
+        {/* Tech / integrations trust bar — honest signal (what we build with),
+            not a fabricated client list. Replaces the placeholder company names. */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.65 }}
           className="mx-auto mt-8 max-w-4xl text-center">
-          <div className="text-xs text-muted-foreground">يثق بنا أصحاب الأعمال لبناء أنظمتهم الذكية</div>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
-            {["Nova Tech", "Falcon Group", "Zenith Retail", "Orbit Finance", "Vertex Care"].map((name) => (
-              <span key={name} dir="ltr" className="font-display text-sm tracking-wide text-muted-foreground/70">{name}</span>
+          <div className="text-xs text-muted-foreground">مبني على تقنيات وتكاملات مؤسسية</div>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-2">
+            {["AI Agents", "Automation", "CRM", "ERP", "WhatsApp", "Data", "APIs"].map((name, i) => (
+              <span key={name} className="flex items-center gap-2">
+                <span dir="ltr" className="font-display text-sm tracking-wide text-muted-foreground/80">{name}</span>
+                {i < 6 && <span className="text-muted-foreground/30">·</span>}
+              </span>
             ))}
           </div>
         </motion.div>
