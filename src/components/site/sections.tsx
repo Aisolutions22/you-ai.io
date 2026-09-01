@@ -218,12 +218,12 @@ export function Hero() {
             {/* Tech / integrations trust line — honest signal (what we build with),
                 not a fabricated client list. */}
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.58 }}
-              className="mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 lg:justify-start">
-              <span className="text-[11px] text-muted-foreground/80">مبني على:</span>
+              className="mt-4 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5 lg:justify-start">
+              <span dir="ltr" className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/70">AI Stack</span>
               {["AI Agents", "Automation", "CRM", "ERP", "WhatsApp", "Data", "APIs"].map((name, i) => (
-                <span key={name} className="flex items-center gap-2">
-                  <span dir="ltr" className="text-[11px] font-medium tracking-wide text-muted-foreground/70">{name}</span>
-                  {i < 6 && <span className="text-muted-foreground/25">·</span>}
+                <span key={name} className="flex items-center gap-2.5">
+                  <span dir="ltr" className="text-[11px] font-semibold tracking-wide text-primary">{name}</span>
+                  {i < 6 && <span className="text-primary/30">·</span>}
                 </span>
               ))}
             </motion.div>
@@ -231,7 +231,7 @@ export function Hero() {
 
           {/* Desktop visual: original full-color portrait with connected capability chips */}
           <div className="relative hidden lg:block">
-            <div className="relative mx-auto w-full max-w-md">
+            <div className="relative mx-auto w-full max-w-sm">
               {/* Dotted connector lines (primary color) from portrait center to each chip */}
               <svg aria-hidden="true" viewBox="0 0 400 480" className="pointer-events-none absolute -inset-x-12 -inset-y-8 h-[calc(100%+4rem)] w-[calc(100%+6rem)] overflow-visible">
                 <line x1="200" y1="240" x2="60" y2="60" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.55" />
