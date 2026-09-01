@@ -204,6 +204,29 @@ export function Hero() {
                 );
               })}
             </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.5 }}
+              className="mt-6 grid max-w-md grid-cols-4 gap-2 sm:mt-7">
+              {t.hero.trust.map((s) => (
+                <div key={s.v} className="rounded-xl border border-border/60 bg-card/60 px-1.5 py-2 text-center">
+                  <div className="font-display text-sm text-gradient sm:text-base">{s.k}</div>
+                  <div className="mt-0.5 text-[9px] leading-tight text-muted-foreground sm:text-[10px]">{s.v}</div>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Tech / integrations trust line — honest signal (what we build with),
+                not a fabricated client list. */}
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.58 }}
+              className="mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 lg:justify-start">
+              <span className="text-[11px] text-muted-foreground/80">مبني على:</span>
+              {["AI Agents", "Automation", "CRM", "ERP", "WhatsApp", "Data", "APIs"].map((name, i) => (
+                <span key={name} className="flex items-center gap-2">
+                  <span dir="ltr" className="text-[11px] font-medium tracking-wide text-muted-foreground/70">{name}</span>
+                  {i < 6 && <span className="text-muted-foreground/25">·</span>}
+                </span>
+              ))}
+            </motion.div>
           </div>
 
           {/* Desktop visual: original full-color portrait with connected capability chips */}
@@ -266,31 +289,6 @@ export function Hero() {
             </div>
           </div>
         </div>
-
-        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.55 }}
-          className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4">
-          {t.hero.trust.map((s) => (
-            <div key={s.v} className="glass rounded-2xl p-3 text-center">
-              <div className="font-display text-xl text-gradient sm:text-2xl">{s.k}</div>
-              <div className="mt-1 text-[11px] leading-tight text-muted-foreground">{s.v}</div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Tech / integrations trust bar — honest signal (what we build with),
-            not a fabricated client list. Replaces the placeholder company names. */}
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.65 }}
-          className="mx-auto mt-8 max-w-4xl text-center">
-          <div className="text-xs text-muted-foreground">مبني على تقنيات وتكاملات مؤسسية</div>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-2">
-            {["AI Agents", "Automation", "CRM", "ERP", "WhatsApp", "Data", "APIs"].map((name, i) => (
-              <span key={name} className="flex items-center gap-2">
-                <span dir="ltr" className="font-display text-sm tracking-wide text-muted-foreground/80">{name}</span>
-                {i < 6 && <span className="text-muted-foreground/30">·</span>}
-              </span>
-            ))}
-          </div>
-        </motion.div>
 
       </div>
 
