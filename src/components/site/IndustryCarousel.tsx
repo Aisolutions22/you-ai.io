@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Pause, Play, ArrowRight, Building2, HeartPulse, Home, Megaphone, Utensils } from "lucide-react";
-import { Section, SectionHeading } from "@/components/site/Section";
+import { Section } from "@/components/site/Section";
 import { useI18n } from "@/lib/i18n";
 
 const ICONS = [Home, HeartPulse, Megaphone, Utensils, Building2];
@@ -37,15 +37,13 @@ export function IndustryCarousel() {
   if (items.length === 0) return null;
 
   return (
-    <Section id="industries">
-      <SectionHeading
-        eyebrow={t.industries.eyebrow}
-        title={<>{t.industries.title1} <span className="text-gradient italic">{t.industries.titleHi}</span> {t.industries.title2}</>}
-        description={t.industries.sub}
-      />
+    <Section id="industries" className="!pt-2 !pb-16 sm:!pt-3 sm:!pb-20">
+      <h2 className="font-display text-xl sm:text-2xl">
+        {t.industries.title1} <span className="text-gradient italic">{t.industries.titleHi}</span> {t.industries.title2}
+      </h2>
 
       <div
-        className="relative mt-10"
+        className="relative mt-6"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
