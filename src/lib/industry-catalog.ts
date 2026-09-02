@@ -1,4 +1,5 @@
 import type { Lang } from "./i18n-types";
+import healthcareImage from "@/assets/industries/healthcare.webp";
 
 export type IndustryItem = {
   k: string;
