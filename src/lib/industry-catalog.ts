@@ -1,4 +1,5 @@
 import type { Lang } from "./i18n-types";
+import ecommerceImage from "@/assets/industries/ecommerce.webp";
 import healthcareImage from "@/assets/industries/healthcare.webp";
 
 export type IndustryItem = {
